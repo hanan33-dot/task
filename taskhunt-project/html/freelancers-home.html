@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskHunt | Home</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/libs/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+
+<body>
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="logo">
+    <a href="home.html"><img src="../assets/images/logo.png" alt="Logo"></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="work.html">Find Work</a></li>
+    <li><a href="hie-talent.html">Hire Talent</a></li>
+    <li><a href="#about-section">About</a></li>
+    <li><a href="#contact-section">Contact</a></li>
+  </ul>
+  <div class="user-menu-container">
+    <div class="notifications animated-bell">
+      <i class="fa-solid fa-bell bell-icon"></i>
+      <i class="fa-solid fa-circle bell-dot"></i>
+    </div>
+    <div class="profile-wrapper">
+      <div id="nav-avatar-circle" style="width:36px;height:36px;border-radius:50%;background:#0090E0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;cursor:pointer;">?</div>
+      <div class="nav-dropdown">
+        <span id="nav-user-name" style="padding:10px 16px;display:block;font-weight:600;color:#051923;border-bottom:1px solid #eee;"></span>
+        <a href="dashboard/freelancer.html">My Profile</a>
+        <a href="work.html" style="color:#0090E0;font-weight:600;">Browse Jobs</a>
+        <a href="#" onclick="Auth.logout();return false;" style="color:#e53e3e;">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+           
+
+  <section class="hero-section">
+    <div class="hero-wrapper">
+      <div class="hero-left">
+        <div class="hero-content">
+          <h1>Welcome to <span>TaskHunt</span></h1>
+          <p>Connecting experts with the best opportunities.</p>
+        </div>
+
+        <div class="search-box-container">
+          <div class="search-input-wrapper">
+            <input type="text" placeholder="Look for a skill, a programming language...">
+            <button class="search-btn">Search</button>
+          </div>
+          <div class="quick-actions">
+            <button class="action-btn blue">Hire Talent</button>
+            <button class="action-btn outline">Find Work</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <img src="../assets/images/hero-illustration.png" alt="Hero Illustration">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TRENDING TASKS -->
+  <section class="trending-pro">
+    <div class="trending-header">
+      <h2>Latest Jobs For You</h2>
+    </div>
+    <div class="trending-grid" id="trending-grid">
+      <p id="tasks-loading" style="text-align:center;color:#888;grid-column:1/-1;padding:40px;">Loading jobs...</p>
+    </div>
+  </section>
+
+  <div class="share-post-section">
+    <a href="work.html" class="lin">
+      <button class="share-btn"><i class="fa-solid fa-briefcase"></i> Browse All Jobs</button>
+    </a>
+  </div>
+
+  <!-- ===== CLIENT TESTIMONIALS ===== -->
+  <section class="testimonials-section">
+
+    <h2 class="section-main-title">What Clients Say</h2>
+
+    <div class="testimonials-container">
+
+      <!-- CARD 1 -->
+      <div class="testi-card">
+        <div class="testi-category">Development & IT</div>
+
+        <div class="testi-header">
+          <div class="client-profile">
+            <div style="width:48px;height:48px;border-radius:50%;background:#0090E0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0;">AR</div>
+            <div>
+              <h4 class="client-name">Ahmed Rayan</h4>
+              <div class="rating">
+                <div  class="stars" style="--rating: 4.1;"></div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 18px;" class="testi-text">
+          "The quality of the website delivered was outstanding. Very professional communication and the project was
+          completed right on time."
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="testi-card">
+        <div class="testi-category">Design & Creative</div>
+
+        <div class="testi-header">
+          <div class="client-profile">
+            <div style="width:48px;height:48px;border-radius:50%;background:#00C8FF;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0;">SJ</div>
+            <div>
+              <h4 class="client-name">Sarah Jamal</h4>
+              <div class="rating">
+                <div class="stars" style="--rating: 4.5;"></div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 18px;" class="testi-text">
+          "Amazing logo design! They really understood my vision for the startup and brought it to life with modern
+          aesthetics."
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CATEGORIES -->
+
+  <h2 class="section-title">Popular Categories</h2>
+
+  <section class="categories">
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-brain icon"></i>
+        <h3>Data & AI</h3>
+      </div>
+    </a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-code icon"></i>
+        <h3>Development & IT</h3>
+      </div>
+    </a>
+<a href="categories/all-categories.html"class="lin">
+    <div class="category">
+      <i class="fa-solid fa-palette icon"></i>
+      <h3>Design & Creative</h3>
+    </div>
+    </a>
+<a href="categories/all-categories.html"class="lin">
+    <div class="category">
+      <i class="fa-solid fa-chart-line icon"></i>
+      <h3>Sales & Marketing</h3>
+    </div>
+    </a>
+<a href="categories/all-categories.html"class="lin">
+    <div class="category">
+      <i class="fa-solid fa-language icon"></i>
+      <h3>Writing & Translation</h3>
+    </div>
+</a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-headset icon"></i>
+        <h3>Admin & Support</h3>
+      </div>
+    </a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-calculator icon"></i>
+        <h3>Finance & Accounting</h3>
+      </div>
+    </a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-scale-balanced icon"></i>
+        <h3>Legal</h3>
+      </div>
+    </a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-users icon"></i>
+        <h3>HR & Training</h3>
+      </div>
+    </a>
+    <a href="categories/all-categories.html" class="lin">
+      <div class="category">
+        <i class="fa-solid fa-building icon"></i>
+        <h3>Engineering & Architecture</h3>
+      </div>
+    </a>
+  </section>
+
+  <!-- about -->
+
+  <section id="about-section" class="about-section">
+    <div class="about-container">
+      <div class="about-text">
+        <h2>Empowering Your <span class="blue">Success</span></h2>
+        <p>Task Hunt is a modern marketplace connecting top talent with ambitious projects. We simplify collaboration,
+          ensure secure growth, and turn professional goals into reality.</p>
+      </div>
+      <div class="about-visual">
+        <div class="dot-animation">
+          <div class="pulse-dot"></div>
+          <div class="orbit-dot"></div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!-- FEATURED SERVICES -->
+    <section class="features-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="features-title">Why Task Hunt is Your Best Choice</h2>
+            <p class="features-subtitle">We provide a secure and efficient ecosystem for both freelancers and clients</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/3-removebg-preview.png" alt="Categories">
+                </div>
+                <h3>Over 350 Categories</h3>
+                <p>Explore a vast array of specialized categories tailored to meet every professional need.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/074325ae7cdf4a80da970d8e30749536-removebg-preview.png" alt="Prices">
+                </div>
+                <h3>Affordable Prices</h3>
+                <p>Get high-quality results without breaking the bank, with services starting as low as $5.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/91ff3480-d383-4671-92d8-c2f70e31daa1-removebg-preview.png" alt="Support">
+                </div>
+                <h3>24/7 Customer Support</h3>
+                <p>Our dedicated support team is available around the clock to assist you with any inquiries.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/6-removebg-preview.png" alt="Protection">
+                </div>
+                <h3>Rights Protection</h3>
+                <p>Secure payment systems that guarantee your financial rights until the work is delivered.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/5-removebg-preview.png" alt="Transactions">
+                </div>
+                <h3>Safe Transactions</h3>
+                <p>Verified profiles and encrypted data ensure every transaction is 100% secure.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <img src="../assets/images/da2e6e42-6d51-4598-8d94-6a3058fcef9b-removebg-preview.png" alt="Providers">
+                </div>
+                <h3>Expert Providers</h3>
+                <p>Collaborate with top-tier freelancers vetted for their skills and professional history.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2>Ready to get started?</h2>
+      <br><br>
+      <a href="signup/ask-signup.html">
+        <button class="btn join" onclick="window.location.href='signup/ask-signup.html'">Join for Free </button>
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+     <footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h3>Task Hunt</h3>
+      <ul>
+        <li><a href="#">About Task Hunt</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Rights Protection</a></li>
+      </ul>
+      <div class="social-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon" alt="Facebook">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon" alt="Instagram">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" class="social-icon" alt="TikTok">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="social-icon" alt="Twitter">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h3>Community</h3>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Discussions</a></li>
+        <li><a href="#">Topics</a></li>
+        <li><a href="#">User Experiences</a></li>
+      </ul>
+    </div>
+
+    <div id="contact-section" class="footer-col contact-col">
+      <div class="contact-box">
+        <form id="contactForm">
+          <h3>Drop us a message</h3>
+          <p>We'd love to hear from you!</p>
+          
+          <div class="form-group">
+            <input type="text" class="footer-input" placeholder="Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="footer-input" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <textarea class="footer-input" rows="3" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="footer-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Task Hunt — All rights reserved</p>
+  </div>
+</footer>
+
+<script src="../assets/js/api.js"></script>
+<script>
+  // ── Auth guard ───────────────────────────────────────
+  const user = Auth.user();
+  if (!user) { window.location.href = 'login.html'; }
+
+  // ── Nav ─────────────────────────────────────────────
+  const initials = user ? user.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase() : '?';
+  document.getElementById('nav-avatar-circle').textContent = initials;
+  document.getElementById('nav-user-name').textContent     = user ? user.name : '';
+
+  // ── Helpers ──────────────────────────────────────────
+  function timeAgo(dateStr) {
+    const diff = Date.now() - new Date(dateStr);
+    const m = Math.floor(diff/60000), h = Math.floor(m/60), d = Math.floor(h/24);
+    if (d > 0) return `${d}d ago`; if (h > 0) return `${h}h ago`; return `${m}m ago`;
+  }
+
+  function taskCard(p) {
+    return `
+    <div class="task-card">
+      <div class="task-top">
+        <span class="task-category">${p.category}</span>
+        <span class="task-price">$${p.budget}</span>
+      </div>
+      <h3>${p.title}</h3>
+      <p class="task-desc">${p.description.slice(0,120)}${p.description.length>120?'...':''}</p>
+      <div class="task-footer" style="margin-top:12px;">
+        <div class="client">
+          <div style="width:36px;height:36px;border-radius:50%;background:#0090E0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;">
+            ${p.author_name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}
+          </div>
+          <div><strong>${p.author_name}</strong></div>
+        </div>
+        <span class="posted">${timeAgo(p.created_at)}</span>
+      </div>
+    </div>`;
+  }
+
+  // ── Load posts ───────────────────────────────────────
+  async function loadTasks() {
+    const grid    = document.getElementById('trending-grid');
+    const loading = document.getElementById('tasks-loading');
+    try {
+      const posts = await getPosts('limit=8');
+      loading.style.display = 'none';
+      grid.innerHTML = posts.length
+        ? posts.map(taskCard).join('')
+        : '<p style="text-align:center;color:#888;grid-column:1/-1;padding:40px;">No jobs available yet. Check back soon!</p>';
+    } catch(e) { loading.textContent = 'Could not load jobs.'; }
+  }
+  loadTasks();
+</script>
+</body>
+</html>
