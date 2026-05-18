@@ -6,7 +6,7 @@
     <title>Hire Talent - TaskHunt</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-         :root {
+        :root {
             --primary: #0077b8;
             --bg: #f4f7fb;
             --card: #ffffff;
@@ -18,7 +18,11 @@
             --light-bg: #f8fafc;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
 
         body {
             margin: 0;
@@ -27,51 +31,48 @@
             color: var(--text);
             overflow-x: hidden;
         }
- /* ===== NAVBAR ===== */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;         
-    padding: 0 5%;        /* عشان ميبقاش لازق في الجوانب */
-    background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    
-    /* أمان إضافي */
-    box-sizing: border-box;
-    overflow: hidden;    /* يمنع أي حاجة بداخل الناف بار إنها تمطه */
-}
 
-.logo {
-    height: 100%;        /* خلي حاوية اللوجو تاخد طول الناف بار */
-    display: flex;
-    align-items: center; /* سنتر اللوجو عمودياً */
-}
+        /* ===== NAVBAR ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0 5%;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-sizing: border-box;
+        }
 
-.logo a {
-    display: flex;       /* يمنع وجود مسافات غريبة تحت اللينك */
-    align-items: center;
-    height: 100%;
-}
+        .logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
 
-.logo img {
-    
-    height: 145px;    
-    width: auto;         
-    display: block;
-    object-fit: contain;
-    margin-right: 50px;
-    margin-bottom: 25px;
-}
- .nav-links {
+        .logo a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-links {
             display: flex;
             list-style: none;
             gap: 30px;
             margin: 0;
             padding: 0;
-         }
+        }
 
-    .nav-links li a {
+        .nav-links li a {
             text-decoration: none;
             color: #333;
             font-size: 16px;
@@ -80,7 +81,7 @@
         }
 
         .nav-links li a:hover {
-            color: #007bff;
+            color: var(--primary);
         }
 
         .auth-buttons {
@@ -98,10 +99,9 @@
             transition: all 0.3s ease;
         }
 
-
         .login {
             background: #f0f6ff;
-            color:#0077B8;
+            color: var(--primary);
         }
 
         .login:hover {
@@ -109,12 +109,12 @@
         }
 
         .signup {
-            background: #0077B8;
+            background: var(--primary);
             color: white;
         }
 
         .signup:hover {
-            background: #0077B8;
+            background: #005f8c;
         }
 
         .menu-toggle {
@@ -175,7 +175,6 @@
             line-height: 1.4;
         }
 
-        /* search box */
         .search-box-container {
             max-width: 520px;
         }
@@ -227,6 +226,8 @@
             font-weight: 600;
             border: none;
             font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .action-btn.blue {
@@ -370,7 +371,7 @@
             transform: rotate(90deg);
         }
 
-        /* MAIN CONTENT */
+        /* MAIN CONTENT - Cards */
         .main-content {
             flex: 1;
             display: flex;
@@ -421,9 +422,8 @@
             gap: 8px;
         }
 
-        .card-info h3::after {
-            content: '✓';
-            background: #4A90E2;
+        .verified-badge {
+            background: var(--primary);
             color: #fff;
             font-size: 11px;
             width: 18px;
@@ -525,7 +525,6 @@
             z-index: 1000;
             border: 1px solid var(--primary);
             backdrop-filter: blur(2px);
-
             opacity: 0;
             pointer-events: none;
             transition: all 0.3s ease;
@@ -537,6 +536,10 @@
             color: #0f172a;
         }
 
+        .cta-fixed a {
+            text-decoration: none;
+        }
+
         .cta-fixed button {
             background: var(--primary);
             border: none;
@@ -546,7 +549,6 @@
             font-weight: 600;
             cursor: pointer;
         }
-
 
         /* FOOTER */
         .footer {
@@ -608,6 +610,10 @@
             outline: none;
         }
 
+        .footer-input:focus {
+            border-color: var(--primary);
+        }
+
         .footer-btn {
             width: 100%;
             padding: 12px;
@@ -618,6 +624,14 @@
             font-weight: bold;
             cursor: pointer;
             transition: 0.2s;
+        }
+
+        .footer-btn:hover {
+            background: var(--primary);
+        }
+
+        .social-section {
+            margin-top: 20px;
         }
 
         .social-icons {
@@ -660,7 +674,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 70px;
+                top: 60px;
                 left: 0;
                 width: 100%;
                 background: white;
@@ -708,28 +722,41 @@
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="logo">
-        <a href="home.html">
-            <img src="../assets/images/logo.png" ">
-        </a>
-    </div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="work.html">Find Work</a></li>
-        <li><a href="hie-talent.html">Hire Talent</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#contact-section">Contact</a></li>
-        <li class="mobile-auth">
-            <button onclick="location.href='../../login/login.html'" class="btn login">Login</button>
-            <button onclick="location.href='../../signup/asksignup.html'" class="btn signup">Sign Up</button>
-        </li>
-    </ul>
-    <div class="auth-buttons">
-        <button onclick="location.href='../../login/login.html'" class="btn login">Login</button>
-        <button onclick="location.href='../../signup/asksignup.html'" class="btn signup">Sign Up</button>
-    </div>
-    <div class="menu-toggle" id="menuToggle">☰</div>
-</nav>
+  <nav class="navbar">
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="TaskHunt Logo">
+            </a>
+        </div>
+
+        <!-- LINKS -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="work.html">Find Work</a></li>
+            <li><a href="hie-talent.html">Hire Talent</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+
+            <!-- MOBILE BUTTONS -->
+            <li class="mobile-auth">
+                <button onclick="location.href='../../login/login.html'" class="btn login">Login</button>
+                <button onclick="location.href='../../signup/asksignup.html'" class="btn signup">Sign Up</button>
+            </li>
+        </ul>
+
+        <!-- DESKTOP BUTTONS -->
+        <div class="auth-buttons">
+            <button id="nav-login" onclick="location.href='login.html'" class="btn login">Login</button>
+            <button id="nav-signup" onclick="location.href='signup/ask-signup.html'" class="btn signup">Sign Up</button>
+            <div id="nav-user" style="display:none;align-items:center;gap:10px;">
+                <span id="nav-username" style="font-weight:600;color:#0077B8;"></span>
+                <button class="btn login" onclick="Auth.logout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- MENU ICON -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
 
 <section class="hero-section">
     <div class="hero-wrapper">
@@ -744,14 +771,15 @@
                     <button class="search-btn" id="searchBtn">Search</button>
                 </div>
                 <div class="hero-buttons">
-                    <a href="post-a-job.html"><button class="action-btn blue">Post a Job</button></a>
+                    <button class="action-btn blue" id="postJobBtn">Post a Job</button>
                     <button class="action-btn outline" id="browseBtn">Browse Freelancers</button>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="../assets/images/hero-illustration.png" alt="Hero Illustration" onerror="this.src='https://placehold.co/500x400?text=Talent+Hiring'">
-        </div>
+      <div class="hero-image">
+                <img src="../assets/images/hero-illustration.png" alt="Hero Illustration"
+                    onerror="this.src='https://placehold.co/500x400?text=Find+Work'">
+            </div>
     </div>
 </section>
 
@@ -768,13 +796,13 @@
             <option value="Finance & Accounting">Finance & Accounting</option>
             <option value="Legal">Legal</option>
             <option value="HR & Training">HR & Training</option>
-            <option value="Engineering & Architecture">Engineering & Architecture</option>
         </select>
         <select id="priceFilter">
             <option value="all">All Prices</option>
-            <option value="0-30">0 - 30$/hr</option>
-            <option value="31-40">31 - 40$/hr</option>
-            <option value="41-50">41 - 50$/hr</option>
+            <option value="0-30">$0 - $30/hr</option>
+            <option value="31-40">$31 - $40/hr</option>
+            <option value="41-50">$41 - $50/hr</option>
+            <option value="51-100">$51+/hr</option>
         </select>
         <select id="expFilter">
             <option value="all">All Experience</option>
@@ -788,165 +816,197 @@
 <div class="page-layout">
     <aside class="sidebar">
         <h3>Categories</h3>
-        <!-- Data & AI -->
-        <div class="category"><button class="category-btn">Data & AI <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../AI/Data Analysis & Visualization.html">Data Analysis & Visualization</a></li><li><a href="../AI/Al Developers.html">AI Developers</a></li><li><a href="../AI/Machine Learning Models.html">Machine Learning Models</a></li><li><a href="../AI/Al Chatbots & Automations.html">AI Chatbots & Automations</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Data & AI <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Data Analysis & Visualization</a></li>
+                <li><a href="#">AI Developers</a></li>
+                <li><a href="#">Machine Learning Models</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Development & IT <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Development&it/dotnet.html">.NET Developers</a></li><li><a href="../Development&it/Full Stack.html">Full Stack Engineers</a></li><li><a href="../Development&it/DevOps.html">DevOps Engineers</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Development & IT <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Full Stack Engineers</a></li>
+                <li><a href="#">Backend Developers</a></li>
+                <li><a href="#">DevOps Engineers</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Design & Creative <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Design&Creative/Graphic Designers/Graphic Designers.html">Graphic Designers</a></li><li><a href="../Design&Creative/UX Designers/UX Designers.html">UX Designers</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Design & Creative <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Graphic Designers</a></li>
+                <li><a href="#">UX Designers</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Sales & Marketing <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../sales/Digital_Marketers.html">Digital Marketers</a></li><li><a href="../sales/Facebook_Ads_Specialists.html">Facebook Ads Specialists</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Sales & Marketing <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Digital Marketers</a></li>
+                <li><a href="#">Facebook Ads Specialists</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Writing & Translation <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Writing & Translation/creative writers.html">Creative Writers</a></li><li><a href="../Writing & Translation/EnglishToSpanish.html">English to Spanish Translators</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Writing & Translation <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Creative Writers</a></li>
+                <li><a href="#">Translators</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Admin & Support <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Admin & Support Specialties/Personal Assistants.html">Personal Assistants</a></li><li><a href="../Admin & Support Specialties/Microsoft Excel Experts.html">Excel Experts</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Admin & Support <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Personal Assistants</a></li>
+                <li><a href="#">Excel Experts</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Finance & Accounting <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Finance & Accounting/Financial Analysts.html">Financial Analysts</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Finance & Accounting <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Financial Analysts</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">Legal <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Corporate law/corporate.html">Corporate Law</a></li></ul>
+        <div class="category">
+            <button class="category-btn">Legal <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Legal Advisors</a></li>
+            </ul>
         </div>
-        <div class="category"><button class="category-btn">HR & Training <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../HR/tech-recruitment.html">Technical Recruiters</a></li></ul>
-        </div>
-        <div class="category"><button class="category-btn">Engineer & Architecture <span class="arrow">›</span></button>
-            <ul class="sub-categories"><li><a href="../Engineering & Architecture/Interior Architects.html">Interior Architects</a></li></ul>
+        <div class="category">
+            <button class="category-btn">HR & Training <span class="arrow">›</span></button>
+            <ul class="sub-categories">
+                <li><a href="#">Technical Recruiters</a></li>
+            </ul>
         </div>
     </aside>
 
     <main class="main-content" id="mainContent">
-        <!-- cards will be within sections -->
         <div id="cardsContainer"></div>
-        <button class="view-more" id="loadMoreBtn">View More</button>
+        <button class="view-more" id="loadMoreBtn">View More Freelancers</button>
     </main>
 </div>
 
 <div class="cta-fixed" id="ctaFixed">
     <p>Can't find the right talent?</p>
-    <a href="post-a-job.html"><button>Post a Project</button></a>
+    <button id="ctaPostJobBtn">Post a Project</button>
 </div>
 
-<!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>Task Hunt</h3>
-                <ul>
-                    <li><a href="#">About Task Hunt</a></li>
-                    <li><a href="#">How It Works</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Rights Protection</a></li>
-                </ul>
-                <div class="social-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon"
-                            alt="Facebook">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon"
-                            alt="Instagram">
-                        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" class="social-icon"
-                            alt="TikTok">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="social-icon"
-                            alt="Twitter">
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Task Hunt</h3>
+            <ul>
+                <li><a href="#">About Task Hunt</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Rights Protection</a></li>
+            </ul>
+            <div class="social-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon" alt="Facebook">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" class="social-icon" alt="Instagram">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" class="social-icon" alt="TikTok">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" class="social-icon" alt="Twitter">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h3>Community</h3>
+            <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Discussions</a></li>
+                <li><a href="#">Topics</a></li>
+            </ul>
+        </div>
+
+        <div id="contact-section" class="footer-col">
+            <div class="contact-box">
+                <form id="contactForm">
+                    <h3>Drop us a message</h3>
+                    <div>
+                        <input type="text" class="footer-input" placeholder="Name" required>
                     </div>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h3>Community</h3>
-                <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Discussions</a></li>
-                    <li><a href="#">Topics</a></li>
-                </ul>
-            </div>
-
-            <div id="contact-section" class="footer-col contact-col">
-                <div class="contact-box">
-                    <form id="contactForm">
-                        <h3>Drop us a message</h3>
-                        <div class="form-group">
-                            <input type="text" class="footer-input" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="footer-input" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="footer-input" rows="3" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="footer-btn">Send Message</button>
-                    </form>
-                </div>
+                    <div>
+                        <input type="email" class="footer-input" placeholder="Email" required>
+                    </div>
+                    <div>
+                        <textarea class="footer-input" rows="3" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="footer-btn">Send Message</button>
+                </form>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Task Hunt — All rights reserved</p>
-        </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Task Hunt — All rights reserved</p>
+    </div>
+</footer>
 
 <script>
-    // ---------- FREELANCER DATA (full list) ----------
+    // Freelancer Data
     const freelancers = [
-        { name: "Ahmed Samir", role: "Data Analyst - Excel & Power BI", type: "Data & AI", price: 25, exp: 5, img: "https://randomuser.me/api/portraits/men/1.jpg", rating: 4.8 },
-        { name: "Sara Ali", role: "Machine Learning Engineer", type: "Data & AI", price: 40, exp: 6, img: "https://randomuser.me/api/portraits/women/2.jpg", rating: 4.9 },
-        { name: "Ali Mohamed", role: "Deep Learning Specialist", type: "Data & AI", price: 45, exp: 4, img: "https://randomuser.me/api/portraits/men/3.jpg", rating: 4.8 },
-        { name: "Mahmoud Tarek", role: "Full Stack Developer", type: "Development & IT", price: 35, exp: 6, img: "https://randomuser.me/api/portraits/men/4.jpg", rating: 4.9 },
-        { name: "Omar Hassan", role: "Backend Developer", type: "Development & IT", price: 30, exp: 5, img: "https://randomuser.me/api/portraits/men/5.jpg", rating: 4.7 },
-        { name: "Nour Adel", role: "DevOps Engineer", type: "Development & IT", price: 38, exp: 4, img: "https://randomuser.me/api/portraits/women/3.jpg", rating: 4.8 },
-        { name: "Farida Ahmed", role: "Graphic Designer", type: "Design & Creative", price: 22, exp: 4, img: "https://randomuser.me/api/portraits/women/4.jpg", rating: 4.9 },
-        { name: "Youssef Gamal", role: "UX/UI Designer", type: "Design & Creative", price: 28, exp: 5, img: "https://randomuser.me/api/portraits/men/6.jpg", rating: 4.8 },
-        { name: "Salma Reda", role: "Digital Marketing Expert", type: "Sales & Marketing", price: 20, exp: 4, img: "https://randomuser.me/api/portraits/women/5.jpg", rating: 4.7 },
-        { name: "Ahmed Nabil", role: "SEO Specialist", type: "Sales & Marketing", price: 25, exp: 3, img: "https://randomuser.me/api/portraits/men/8.jpg", rating: 4.8 },
-        { name: "Nada Sherif", role: "Content Writer", type: "Writing & Translation", price: 18, exp: 4, img: "https://randomuser.me/api/portraits/women/7.jpg", rating: 4.9 },
-        { name: "Mohamed Ibrahim", role: "Translator (EN/AR)", type: "Writing & Translation", price: 22, exp: 6, img: "https://randomuser.me/api/portraits/men/9.jpg", rating: 4.8 },
-        { name: "Khaled Emad", role: "Virtual Assistant", type: "Admin & Support", price: 15, exp: 5, img: "https://randomuser.me/api/portraits/men/10.jpg", rating: 4.7 },
-        { name: "Amr Adel", role: "Excel Expert", type: "Admin & Support", price: 20, exp: 7, img: "https://randomuser.me/api/portraits/men/11.jpg", rating: 4.9 },
-        { name: "Mona Lotfy", role: "Financial Analyst", type: "Finance & Accounting", price: 30, exp: 6, img: "https://randomuser.me/api/portraits/women/1.jpg", rating: 4.8 },
-        { name: "Hossam Reda", role: "Corporate Lawyer", type: "Legal", price: 45, exp: 10, img: "https://randomuser.me/api/portraits/men/14.jpg", rating: 5.0 },
-        { name: "Reem Hany", role: "Technical Recruiter", type: "HR & Training", price: 25, exp: 5, img: "https://randomuser.me/api/portraits/women/12.jpg", rating: 4.7 }
+        { name: "Ahmed Samir", role: "Data Analyst - Excel & Power BI", type: "Data & AI", price: 25, exp: 5, img: "https://randomuser.me/api/portraits/men/1.jpg", rating: 4.8, verified: true },
+        { name: "Sara Ali", role: "Machine Learning Engineer", type: "Data & AI", price: 40, exp: 6, img: "https://randomuser.me/api/portraits/women/2.jpg", rating: 4.9, verified: true },
+        { name: "Ali Mohamed", role: "Deep Learning Specialist", type: "Data & AI", price: 45, exp: 4, img: "https://randomuser.me/api/portraits/men/3.jpg", rating: 4.8, verified: false },
+        { name: "Mahmoud Tarek", role: "Full Stack Developer", type: "Development & IT", price: 35, exp: 6, img: "https://randomuser.me/api/portraits/men/4.jpg", rating: 4.9, verified: true },
+        { name: "Omar Hassan", role: "Backend Developer", type: "Development & IT", price: 30, exp: 5, img: "https://randomuser.me/api/portraits/men/5.jpg", rating: 4.7, verified: false },
+        { name: "Nour Adel", role: "DevOps Engineer", type: "Development & IT", price: 38, exp: 4, img: "https://randomuser.me/api/portraits/women/3.jpg", rating: 4.8, verified: true },
+        { name: "Farida Ahmed", role: "Graphic Designer", type: "Design & Creative", price: 22, exp: 4, img: "https://randomuser.me/api/portraits/women/4.jpg", rating: 4.9, verified: false },
+        { name: "Youssef Gamal", role: "UX/UI Designer", type: "Design & Creative", price: 28, exp: 5, img: "https://randomuser.me/api/portraits/men/6.jpg", rating: 4.8, verified: true },
+        { name: "Salma Reda", role: "Digital Marketing Expert", type: "Sales & Marketing", price: 20, exp: 4, img: "https://randomuser.me/api/portraits/women/5.jpg", rating: 4.7, verified: false },
+        { name: "Ahmed Nabil", role: "SEO Specialist", type: "Sales & Marketing", price: 25, exp: 3, img: "https://randomuser.me/api/portraits/men/8.jpg", rating: 4.8, verified: true },
+        { name: "Nada Sherif", role: "Content Writer", type: "Writing & Translation", price: 18, exp: 4, img: "https://randomuser.me/api/portraits/women/7.jpg", rating: 4.9, verified: false },
+        { name: "Mohamed Ibrahim", role: "Translator (EN/AR)", type: "Writing & Translation", price: 22, exp: 6, img: "https://randomuser.me/api/portraits/men/9.jpg", rating: 4.8, verified: true },
+        { name: "Khaled Emad", role: "Virtual Assistant", type: "Admin & Support", price: 15, exp: 5, img: "https://randomuser.me/api/portraits/men/10.jpg", rating: 4.7, verified: false },
+        { name: "Amr Adel", role: "Excel Expert", type: "Admin & Support", price: 20, exp: 7, img: "https://randomuser.me/api/portraits/men/11.jpg", rating: 4.9, verified: true },
+        { name: "Mona Lotfy", role: "Financial Analyst", type: "Finance & Accounting", price: 30, exp: 6, img: "https://randomuser.me/api/portraits/women/1.jpg", rating: 4.8, verified: false },
+        { name: "Hossam Reda", role: "Corporate Lawyer", type: "Legal", price: 45, exp: 10, img: "https://randomuser.me/api/portraits/men/14.jpg", rating: 5.0, verified: true },
+        { name: "Reem Hany", role: "Technical Recruiter", type: "HR & Training", price: 25, exp: 5, img: "https://randomuser.me/api/portraits/women/12.jpg", rating: 4.7, verified: false }
     ];
 
-    let allCards = [];
-    let visibleCount = 4;
+    let visibleCount = 6;
     let filteredList = [...freelancers];
 
     function renderCards() {
         const container = document.getElementById("cardsContainer");
         if (!container) return;
         container.innerHTML = "";
+        
         const toShow = filteredList.slice(0, visibleCount);
+        
+        if (toShow.length === 0) {
+            container.innerHTML = '<div style="text-align: center; padding: 40px; background: white; border-radius: 28px;"><i class="fas fa-search" style="font-size: 48px; color: #ccc;"></i><p style="margin-top: 16px;">No freelancers found. Try adjusting your filters.</p></div>';
+            return;
+        }
+        
         toShow.forEach(f => {
             const card = document.createElement("div");
             card.className = "up-card";
-            card.setAttribute("data-price", f.price);
-            card.setAttribute("data-type", f.type);
-            card.setAttribute("data-exp", f.exp);
             card.innerHTML = `
                 <div class="card-left">
                     <img src="${f.img}" class="avatar-img" onerror="this.src='https://randomuser.me/api/portraits/lego/1.jpg'">
                     <div class="card-info">
-                        <h3>${f.name}</h3>
+                        <h3>${f.name} ${f.verified ? '<span class="verified-badge">✓</span>' : ''}</h3>
                         <div class="role">${f.role}</div>
                         <div class="category-tag">${f.type}</div>
-                        <div class="meta"><span>⭐ ${f.rating}</span> | Exp: ${f.exp} yrs | Egypt</div>
+                        <div class="meta"><span>⭐ ${f.rating}</span> | Exp: ${f.exp} yrs</div>
                     </div>
                 </div>
                 <div class="card-right">
                     <div class="hours">$${f.price} <span>/hr</span></div>
-                    <button class="view-profile-btn">View Profile</button>
+                    <button class="view-profile-btn" onclick="viewProfile('${f.name}')">View Profile</button>
                 </div>
             `;
             container.appendChild(card);
         });
+        
         const loadBtn = document.getElementById("loadMoreBtn");
-        if (loadBtn) loadBtn.style.display = visibleCount >= filteredList.length ? "none" : "block";
+        if (loadBtn) {
+            loadBtn.style.display = visibleCount >= filteredList.length ? "none" : "block";
+        }
     }
 
     function filterAndRender() {
@@ -957,36 +1017,57 @@
 
         filteredList = freelancers.filter(f => {
             if (typeVal !== "all" && f.type !== typeVal) return false;
+            
             if (priceVal !== "all") {
                 let [min, max] = priceVal.split("-").map(Number);
                 if (f.price < min || f.price > max) return false;
             }
+            
             if (expVal !== "all") {
                 let [min, max] = expVal.split("-").map(Number);
                 if (f.exp < min || f.exp > max) return false;
             }
-            if (searchVal && !f.name.toLowerCase().includes(searchVal) && !f.role.toLowerCase().includes(searchVal) && !f.type.toLowerCase().includes(searchVal)) return false;
+            
+            if (searchVal && !f.name.toLowerCase().includes(searchVal) && 
+                !f.role.toLowerCase().includes(searchVal) && 
+                !f.type.toLowerCase().includes(searchVal)) return false;
+                
             return true;
         });
-        visibleCount = 4;
+        
+        visibleCount = 6;
         renderCards();
     }
 
     function loadMore() {
-        visibleCount += 4;
+        visibleCount += 6;
         renderCards();
     }
 
-    // Event listeners
-    document.getElementById("typeFilter").addEventListener("change", filterAndRender);
-    document.getElementById("priceFilter").addEventListener("change", filterAndRender);
-    document.getElementById("expFilter").addEventListener("change", filterAndRender);
-    document.getElementById("searchBtn").addEventListener("click", filterAndRender);
-    document.getElementById("browseBtn").addEventListener("click", () => window.scrollTo({ top: document.querySelector(".page-layout").offsetTop - 30, behavior: "smooth" }));
-    document.getElementById("loadMoreBtn").addEventListener("click", loadMore);
-    document.getElementById("searchKeyword")?.addEventListener("keypress", (e) => { if(e.key === "Enter") filterAndRender(); });
+    function viewProfile(name) {
+        alert(`Viewing profile of ${name}\nThis feature will show full freelancer details.`);
+    }
 
-    // Sidebar toggle categories
+    // Event Listeners
+    document.getElementById("typeFilter")?.addEventListener("change", filterAndRender);
+    document.getElementById("priceFilter")?.addEventListener("change", filterAndRender);
+    document.getElementById("expFilter")?.addEventListener("change", filterAndRender);
+    document.getElementById("searchBtn")?.addEventListener("click", filterAndRender);
+    document.getElementById("loadMoreBtn")?.addEventListener("click", loadMore);
+    document.getElementById("browseBtn")?.addEventListener("click", () => {
+        document.querySelector(".page-layout")?.scrollIntoView({ behavior: "smooth" });
+    });
+    document.getElementById("postJobBtn")?.addEventListener("click", () => {
+        alert("Post a Job feature - Create a new job posting");
+    });
+    document.getElementById("ctaPostJobBtn")?.addEventListener("click", () => {
+        alert("Post a Project - Get started now!");
+    });
+    document.getElementById("searchKeyword")?.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") filterAndRender();
+    });
+
+    // Sidebar category toggle
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -994,48 +1075,68 @@
         });
     });
 
-    // mobile navbar
+    // Handle subcategory clicks
+    document.querySelectorAll('.sub-categories li a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const searchInput = document.getElementById("searchKeyword");
+            if (searchInput) {
+                searchInput.value = link.textContent;
+                filterAndRender();
+            }
+        });
+    });
+
+    // Mobile navbar toggle
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
-    if(menuToggle) menuToggle.onclick = () => navLinks.classList.toggle("active");
+    if (menuToggle) {
+        menuToggle.onclick = () => navLinks.classList.toggle("active");
+    }
+
+    // Login/Signup buttons
+    document.querySelectorAll('.login, .signup').forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert(`You clicked ${btn.textContent} - Authentication feature coming soon`);
+        });
+    });
 
     // CTA scroll logic
     const cta = document.querySelector('.cta-fixed');
     const footerElem = document.querySelector('footer');
+    
     window.addEventListener('scroll', () => {
-    if (!footerElem || !cta) return;
-
-    const scrollY = window.scrollY;
-
-    // 👇 يظهر بعد scroll
-    if (scrollY > 200) {
-        cta.style.opacity = "1";
-        cta.style.pointerEvents = "auto";
-    } else {
-        cta.style.opacity = "0";
-        cta.style.pointerEvents = "none";
-    }
-
-    // 👇 حساب المسافة من الفوتر
-    const footerRect = footerElem.getBoundingClientRect();
-    const winH = window.innerHeight;
-
-    if (footerRect.top < winH) {
-        const overlap = winH - footerRect.top;
-        cta.style.bottom = overlap + 20 + "px";
-    } else {
-        cta.style.bottom = "24px";
-    }
+        if (!footerElem || !cta) return;
+        
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 200) {
+            cta.style.opacity = "1";
+            cta.style.pointerEvents = "auto";
+        } else {
+            cta.style.opacity = "0";
+            cta.style.pointerEvents = "none";
+        }
+        
+        const footerRect = footerElem.getBoundingClientRect();
+        const winH = window.innerHeight;
+        
+        if (footerRect.top < winH) {
+            const overlap = winH - footerRect.top;
+            cta.style.bottom = overlap + 20 + "px";
+        } else {
+            cta.style.bottom = "24px";
+        }
     });
 
-    // Contact form dummy
+    // Contact form handler
     document.getElementById("contactForm")?.addEventListener("submit", (e) => {
         e.preventDefault();
-        alert("Message sent! We'll get back soon.");
+        alert("Message sent! We'll get back to you soon.");
         e.target.reset();
     });
 
-    // init render
+    // Initial render
     filterAndRender();
 </script>
 </body>

@@ -2,2005 +2,1130 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskHunt | Client Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TaskHunt | Freelancer Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        :root {
-            --primary-blue: #0077B8;
-            --primary-dark: #005a8c;
-            --primary-light: #e3f2fd;
-            --bg-color: #f7f9fc;
-            --text-dark: #1a2b3c;
-            --text-gray: #6c7a89;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --success: #28a745;
-            --warning: #ffc107;
-            --danger: #dc3545;
-            --border-color: rgba(0, 0, 0, 0.05);
-            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-        }
-
+        /* ==================== FREELANCER DASHBOARD STYLES - BLUE THEME ==================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
 
-        /* NAVBAR STYLES */
-        nav.nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 30px;
-            height: 50px;
-            background: #ffffff;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
+        :root {
+            --primary: #0077B8;
+            --primary-dark: #005a8c;
+            --primary-light: #E1F0FA;
+            --primary-gradient: linear-gradient(135deg, #0077B8, #00A8FF);
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --white: #FFFFFF;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --radius: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --transition: all 0.3s ease;
         }
-
-        .logo img {
-            height: 40px;
-            width: auto;
-            align-items: center;
-            padding-bottom: px;
-        }
-
-        nav.nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        nav.nav ul li a {
-            color: #051923;
-            text-decoration: none;
-            font-size: 18px;
-            transition: 0.3s;
-        }
-
-        nav.nav ul li a:hover {
-            color: #0077B8;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .nav-links li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .auth-buttons .btn {
-            width: 90px;
-            height: 35px;
-            padding: 8px 0;
-            text-align: center;
-            display: inline-block;
-            border-radius: 8px;
-            font-size: 17px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .login-blue {
-            background-color: #f0f6ff;
-            color: white;
-            border: none;
-        }
-
-        .auth-buttons .btn:hover {
-            opacity: 0.8;
-            transform: translateY(-0.5px);
-        }
-
-        .signup-blue {
-            background-color: #0077B8;
-            color: white;
-        }
-
-        .user-menu-container {
-            display: flex;
-            align-items: center;
-        }
-
-        nav.nav .logo {
-            margin-bottom: 0;
-            gap: 8px;
-            height: 50px;
-            align-items: center;
-        }
-        .user-menu-container {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* المسافة بين الجرس والبروفايل */
-}
-
-.nav-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid var(--c3);
-    transition: 0.3s ease;
-}
-
-.nav-avatar:hover {
-    transform: translateY(-3px);
-}
-
-.profile-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-/* القائمة اللي بتفتح لما اقرب   من البروفايل */
-.nav-dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 45px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    min-width: 140px;
-    z-index: 1000;
-}
-
-.profile-wrapper:hover .nav-dropdown {
-    display: block;
-}
-
-.nav-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    color: var(--c4);
-    text-decoration: none;
-    font-size: 14px;
-    border-bottom: 1px solid #eee;
-}
-
-.nav-dropdown a:last-child { border: none; }
-
-.nav-dropdown a:hover {
-    background: #f8f9fa;
-    color: var(--c3);
-}
-
-/* ستايل الجرس والتنبيهات */
-.notifications {
-    position: relative;
-    font-size: 20px;
-    color: var(--c4);
-    cursor: pointer;
-}
-
-/* ت(Bell Wobble Animation) */
-.animated-bell:hover .bell-icon {
-    animation: bell-wobble 0.6s ease-in-out infinite; /* سرعة ونوع الحركة */
-}
-
-.bell-dot {
-    position: absolute;
-    bottom: -3px;
-    right: 50%; 
-    transform: translateX(50%);
-    font-size: 6px; /* حجم النقطة */
-    color: var(--c4); 
-}
-
-/* الاهتزاز */
-@keyframes bell-wobble {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(10deg); }
-    30% { transform: rotate(-10deg); }
-    45% { transform: rotate(5deg); }
-    60% { transform: rotate(-5deg); }
-    75% { transform: rotate(2deg); }
-    100% { transform: rotate(0deg); }
-}
 
         body {
-            background: linear-gradient(135deg, #f7f9fc 0%, #eef2f7 100%);
-            height: 100vh;
-            display: flex;
-            overflow: hidden;
-            padding-top: 50px;
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            transition: var(--transition);
         }
 
         body.dark {
-            background: linear-gradient(135deg, #1a1f2e 0%, #0f1119 100%);
+            --gray-50: #0F172A;
+            --gray-100: #1E293B;
+            --gray-200: #334155;
+            --gray-300: #475569;
+            --gray-400: #64748B;
+            --gray-500: #94A3B8;
+            --gray-600: #CBD5E1;
+            --gray-700: #E2E8F0;
+            --gray-800: #F1F5F9;
+            background: #0F172A;
         }
 
-        body.dark .sidebar {
-            background: rgba(26, 31, 46, 0.95);
-            border-right-color: rgba(255, 255, 255, 0.05);
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--gray-200); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
-        body.dark .main-content {
-            background: transparent;
-        }
+        .app { display: flex; min-height: 100vh; }
 
-        body.dark .card,
-        body.dark .mini-card,
-        body.dark .search-area,
-        body.dark .user-profile,
-        body.dark .table-container,
-        body.dark .modal-content,
-        body.dark .freelancer-card {
-            background: rgba(31, 37, 55, 0.95);
-            border-color: rgba(255, 255, 255, 0.05);
-            color: #e5e7eb;
-        }
-
-        body.dark .stat-value,
-        body.dark .stat-label,
-        body.dark td,
-        body.dark .welcome-msg p,
-        body.dark .job-title,
-        body.dark .freelancer-name {
-            color: #e5e7eb;
-        }
-
-        body.dark .sidebar nav ul li {
-            color: #9ca3af;
-        }
-
-        body.dark .sidebar nav ul li.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        body.dark input,
-        body.dark select,
-        body.dark textarea {
-            background: #1f2937;
-            color: white;
-            border-color: #374151;
-        }
-
-        /* Dark mode for new profile components */
-        body.dark .profile-hero-card,
-        body.dark .stats-grid-mini,
-        body.dark .bio-card,
-        body.dark .details-card,
-        body.dark .skills-card,
-        body.dark .pref-card,
-        body.dark .contact-card {
-            background: rgba(31, 37, 55, 0.95);
-            border-color: rgba(255, 255, 255, 0.05);
-        }
-
-        body.dark .profile-title h2,
-        body.dark .bio-text,
-        body.dark .info-text,
-        body.dark .section-title {
-            color: #e5e7eb;
-        }
-
+        /* Sidebar */
         .sidebar {
             width: 280px;
-            padding:10px 24px;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid var(--border-color);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            overflow-y: auto;
-        }
-
-        .logo {
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-blue);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-
-        .logo h2 {
-            font-size: 22px;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        body.dark .logo h2 {
-            color: white;
-        }
-
-        .logo p {
-            font-size: 11px;
-            color: var(--text-gray);
-        }
-
-        nav ul {
-            list-style: none;
-        }
-
-        nav ul li {
-            padding: 12px 16px;
-            margin-bottom: 8px;
-            color: var(--text-gray);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-radius: 12px;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        nav ul li i {
-            width: 22px;
-            font-size: 18px;
-        }
-
-        nav ul li.active {
-            background: var(--primary-blue);
-            color: white;
-            box-shadow: 0 8px 20px rgba(0, 119, 184, 0.2);
-        }
-
-        nav ul li:hover:not(.active) {
-            background: rgba(0, 119, 184, 0.08);
-            color: var(--primary-blue);
-            transform: translateX(5px);
-        }
-
-        hr {
-            margin: 20px 0;
-            border-color: var(--border-color);
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 32px 40px;
-            overflow-y: auto;
-        }
-
-        .top-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .welcome-msg h1 {
-            font-size: 28px;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        .welcome-msg p {
-            color: var(--text-gray);
-            font-size: 14px;
-            margin-top: 4px;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .search-area {
-            display: flex;
-            align-items: center;
-            background: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            width: 280px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border-color);
-        }
-
-        .search-area input {
-            border: none;
-            outline: none;
-            padding-left: 12px;
-            width: 100%;
-            background: transparent;
-        }
-
-        .notification-bell {
-            position: relative;
-            cursor: pointer;
-            font-size: 20px;
-            color: var(--text-gray);
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--danger);
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 10px;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 6px 16px 6px 12px;
-            background: white;
-            border-radius: 40px;
-            cursor: pointer;
-            border: 1px solid var(--border-color);
-        }
-
-        .user-profile img {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .dark-mode-toggle {
-            cursor: pointer;
-            font-size: 18px;
-            color: var(--text-gray);
-            padding: 8px;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 24px;
-            padding: 24px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-light);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--primary-blue);
-            margin-bottom: 16px;
-        }
-
-        .stat-value {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .stat-label {
-            color: var(--text-gray);
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        .freelancers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 20px;
-        }
-
-        .freelancer-card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s;
-        }
-
-        .freelancer-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        .freelancer-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .freelancer-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--primary-blue);
-        }
-
-        .freelancer-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-dark);
-        }
-
-        .freelancer-title {
-            font-size: 13px;
-            color: var(--text-gray);
-        }
-
-        .freelancer-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 12px 0;
-        }
-
-        .skill-tag {
-            background: var(--primary-light);
-            color: var(--primary-blue);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .freelancer-rating {
-            color: #ffc107;
-            margin: 10px 0;
-        }
-
-        .btn-primary {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.2s;
-            width: 100%;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 8px 16px;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: 0.2s;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .table-container {
-            background: white;
-            border-radius: 24px;
-            padding: 24px;
-            border: 1px solid var(--border-color);
-            overflow-x: auto;
-        }
-
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 16px 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            color: var(--text-gray);
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        td {
-            color: var(--text-dark);
-        }
-
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .status-open {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .status-in-progress {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .status-completed {
-            background: #cce5ff;
-            color: #004085;
-        }
-
-        .status-pending {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-icon {
-            padding: 6px 10px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: 0.2s;
-            color: var(--text-gray);
-        }
-
-        .modal {
-            display: none;
+            background: var(--white);
+            border-right: 1px solid var(--gray-200);
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 28px;
-            padding: 32px;
-            width: 90%;
-            max-width: 550px;
-            animation: slideUp 0.3s;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: white;
-            padding: 14px 24px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            z-index: 1100;
-            animation: slideInRight 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(400px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        .notifications-dropdown {
-            position: absolute;
-            top: 60px;
-            right: 120px;
-            background: white;
-            border-radius: 20px;
-            width: 320px;
-            max-height: 400px;
+            height: 100vh;
             overflow-y: auto;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            display: none;
+            transition: var(--transition);
             z-index: 100;
-            border: 1px solid var(--border-color);
+        }
+        body.dark .sidebar { background: var(--gray-100); }
+
+        .sidebar-header { padding: 1.5rem; border-bottom: 1px solid var(--gray-200); }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-icon { 
+            width: 40px; 
+            height: 40px; 
+            background: var(--primary-gradient); 
+            border-radius: var(--radius); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 1.2rem; 
+        }
+        .logo-text { 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+        }
+        .role-badge { 
+            background: var(--primary-gradient); 
+            color: white; 
+            padding: 0.25rem 0.75rem; 
+            border-radius: 20px; 
+            font-size: 0.7rem; 
+            font-weight: 600; 
+            margin-left: 0.5rem; 
         }
 
-        .notifications-dropdown.show {
-            display: block;
+        .nav-menu { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+        .nav-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            padding: 0.75rem 1rem; 
+            border-radius: var(--radius); 
+            color: var(--gray-600); 
+            cursor: pointer; 
+            transition: var(--transition); 
+            font-weight: 500; 
         }
+        .nav-item i { width: 22px; font-size: 1rem; }
+        .nav-item:hover { background: var(--gray-100); color: var(--primary); }
+        .nav-item.active { background: var(--primary-gradient); color: white; box-shadow: var(--shadow-md); }
 
-        .notification-item {
-            padding: 16px;
-            border-bottom: 1px solid var(--border-color);
-            cursor: pointer;
-        }
+        /* Main Content */
+        .main-content { flex: 1; margin-left: 280px; padding: 1.5rem 2rem; }
 
-        .notification-item.unread {
-            background: rgba(0, 119, 184, 0.08);
-        }
-
-        /* ========== NEW PROFILE PAGE STYLES (ADDED ONLY FOR MY PROFILE) ========== */
-        .profile-new-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 28px;
-            margin-top: 12px;
-        }
-
-        .profile-left-col {
-            flex: 2;
-            min-width: 260px;
-        }
-
-        .profile-right-col {
-            flex: 1.2;
-            min-width: 280px;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .profile-hero-card {
-            background: white;
-            border-radius: 32px;
-            padding: 32px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.2s;
-            margin-bottom: 28px;
-        }
-
-        .hero-flex {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .profile-avatar-xl {
-            position: relative;
-        }
-
-        .profile-avatar-xl img {
-            width: 128px;
-            height: 128px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
-            background: var(--primary-light);
-        }
-
-        .camera-btn {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: var(--primary-blue);
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            cursor: pointer;
-            border: 2px solid white;
-            transition: 0.2s;
-        }
-
-        .camera-btn:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
-
-        .profile-title h2 {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .badge-client {
-            background: var(--primary-light);
-            color: var(--primary-blue);
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        .profile-title p {
-            color: var(--text-gray);
-            margin-top: 8px;
-        }
-
-        .edit-profile-btn {
-            background: transparent;
-            border: 1.5px solid var(--primary-blue);
-            color: var(--primary-blue);
-            padding: 10px 22px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-left: auto;
-        }
-
-        .edit-profile-btn:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .stats-grid-mini {
-            background: white;
-            border-radius: 28px;
-            padding: 20px 28px;
+        /* Top Bar */
+        .top-bar {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem 1.5rem;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 28px;
-        }
-
-        .stat-block {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat-number {
-            font-size: 32px;
-            font-weight: 800;
-            color: var(--primary-blue);
-            line-height: 1.2;
-        }
-
-        .stat-caption {
-            font-size: 13px;
-            color: var(--text-gray);
-            letter-spacing: 0.3px;
-        }
-
-        .info-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .bio-card, .details-card, .skills-card, .pref-card, .contact-card {
-            background: white;
-            border-radius: 28px;
-            padding: 24px 28px;
-            border: 1px solid var(--border-color);
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 18px;
-            display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--text-dark);
+            margin-bottom: 2rem;
+            border: 1px solid var(--gray-200);
+            position: sticky;
+            top: 1rem;
+            z-index: 99;
         }
-
-        .bio-text {
-            line-height: 1.5;
-            color: var(--text-dark);
+        body.dark .top-bar { background: var(--gray-100); }
+        .page-title h1 { font-size: 1.5rem; font-weight: 700; color: var(--gray-800); }
+        .page-title p { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.25rem; }
+        .top-actions { display: flex; align-items: center; gap: 1rem; }
+        .search-bar { 
+            display: flex; 
+            align-items: center; 
+            background: var(--gray-100); 
+            border-radius: 50px; 
+            padding: 0.5rem 1rem; 
+            gap: 0.5rem; 
         }
-
-        .info-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+        .search-bar input { border: none; background: none; outline: none; width: 180px; }
+        .notification-btn, .dark-toggle { 
+            width: 40px; 
+            height: 40px; 
+            background: var(--gray-100); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            cursor: pointer; 
+            position: relative; 
+            transition: var(--transition);
         }
-
-        .info-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-light);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-blue);
-            font-size: 18px;
+        .notification-btn:hover, .dark-toggle:hover { background: var(--primary-light); color: var(--primary); }
+        .notification-badge { 
+            position: absolute; 
+            top: -5px; 
+            right: -5px; 
+            background: var(--danger); 
+            color: white; 
+            font-size: 0.7rem; 
+            padding: 2px 6px; 
+            border-radius: 20px; 
         }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
 
-        .info-content {
-            flex: 1;
+        /* Sections */
+        .section { display: none; animation: fadeIn 0.4s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { 
+            background: var(--white); 
+            border-radius: var(--radius-lg); 
+            padding: 1.5rem; 
+            border: 1px solid var(--gray-200); 
+            transition: var(--transition); 
         }
-
-        .info-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: var(--text-gray);
-            letter-spacing: 0.5px;
+        body.dark .stat-card { background: var(--gray-100); }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .stat-icon { 
+            width: 48px; 
+            height: 48px; 
+            background: var(--primary-light); 
+            border-radius: var(--radius); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.3rem; 
+            color: var(--primary); 
+            margin-bottom: 1rem; 
         }
+        .stat-value { font-size: 2rem; font-weight: 800; color: var(--gray-800); }
+        .stat-label { color: var(--gray-500); font-size: 0.8rem; margin-top: 0.25rem; }
 
-        .info-text {
-            font-weight: 600;
-            color: var(--text-dark);
+        /* Charts */
+        .charts-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .chart-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; border: 1px solid var(--gray-200); }
+        body.dark .chart-card { background: var(--gray-100); }
+        .chart-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; color: var(--gray-600); }
+        canvas { max-height: 250px; }
+
+        /* Cards */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .proposal-card, .post-card { 
+            background: var(--white); 
+            border-radius: var(--radius-lg); 
+            padding: 1.5rem; 
+            border: 1px solid var(--gray-200); 
+            transition: var(--transition); 
         }
+        body.dark .proposal-card, body.dark .post-card { background: var(--gray-100); }
+        .proposal-card:hover, .post-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 
-        .skills-tags-new {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 12px;
+        /* Badges */
+        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.7rem; font-weight: 600; }
+        .badge-pending { background: #FEF3C7; color: #92400E; }
+        .badge-accepted { background: #D1FAE5; color: #065F46; }
+        .badge-rejected { background: #FEE2E2; color: #991B1B; }
+        .badge-active { background: var(--primary-light); color: var(--primary); }
+
+        /* Buttons */
+        .btn-primary { 
+            background: var(--primary-gradient); 
+            color: white; 
+            border: none; 
+            padding: 0.6rem 1.2rem; 
+            border-radius: var(--radius); 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: var(--transition); 
         }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
-        .skill-tag-new {
-            background: var(--primary-light);
-            padding: 8px 18px;
-            border-radius: 40px;
-            font-size: 13px;
+        /* Forms */
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.8rem; color: var(--gray-700); }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; 
+            padding: 0.7rem; 
+            border: 1px solid var(--gray-200); 
+            border-radius: var(--radius); 
+            background: var(--white); 
+            transition: var(--transition);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+        body.dark .form-group input, body.dark .form-group select, body.dark .form-group textarea { background: var(--gray-200); border-color: var(--gray-300); color: var(--gray-800); }
+
+        /* Table */
+        .table-container { background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); overflow-x: auto; }
+        body.dark .table-container { background: var(--gray-100); }
+        .table-header { padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .table-header h3 { font-size: 1rem; font-weight: 600; color: var(--gray-800); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 1rem 1.5rem; text-align: left; border-bottom: 1px solid var(--gray-200); }
+        th { color: var(--gray-500); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        td { color: var(--gray-700); }
+
+        /* Chat */
+        .chat-container { display: flex; gap: 1.5rem; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); overflow: hidden; min-height: 500px; }
+        .chat-sidebar { width: 300px; border-right: 1px solid var(--gray-200); background: var(--white); }
+        body.dark .chat-sidebar { background: var(--gray-100); }
+        .chat-conversation { padding: 1rem; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; border-bottom: 1px solid var(--gray-200); transition: var(--transition); }
+        .chat-conversation:hover { background: var(--gray-100); }
+        .chat-conversation.active { background: var(--primary-light); }
+        .chat-avatar { 
+            width: 45px; 
+            height: 45px; 
+            background: var(--primary-light); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
+            color: var(--primary); 
+        }
+        .chat-main { flex: 1; display: flex; flex-direction: column; }
+        .chat-header { padding: 1rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; }
+        .chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+        .message { max-width: 70%; padding: 0.6rem 1rem; border-radius: 18px; font-size: 0.8rem; }
+        .message.sent { background: var(--primary-gradient); color: white; align-self: flex-end; }
+        .message.received { background: var(--gray-100); color: var(--gray-800); align-self: flex-start; }
+        body.dark .message.received { background: var(--gray-200); }
+        .chat-input-area { display: flex; gap: 0.75rem; padding: 1rem; border-top: 1px solid var(--gray-200); }
+        .chat-input-area input { flex: 1; padding: 0.7rem; border: 1px solid var(--gray-200); border-radius: 25px; outline: none; background: var(--white); }
+        body.dark .chat-input-area input { background: var(--gray-200); color: var(--gray-800); }
+        .file-attach { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--gray-100); border-radius: 50%; cursor: pointer; transition: var(--transition); }
+        .file-attach:hover { background: var(--primary-light); color: var(--primary); }
+
+        /* Wallet */
+        .wallet-balance { 
+            background: var(--primary-gradient); 
+            color: white; 
+            border-radius: var(--radius-lg); 
+            padding: 2rem; 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+        }
+        .wallet-balance h3 { font-size: 2.5rem; font-weight: 800; }
+        .wallet-balance p { opacity: 0.9; }
+        .wallet-actions { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
+
+        /* Profile */
+        .profile-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .profile-avatar { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid var(--primary); 
+            cursor: pointer; 
+            transition: var(--transition); 
+        }
+        .profile-avatar:hover { transform: scale(1.05); }
+        .skills-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .skill-tag { 
+            background: var(--primary-light); 
+            color: var(--primary-dark); 
+            padding: 0.4rem 1rem; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
             font-weight: 500;
-            color: var(--primary-blue);
+            cursor: pointer; 
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+        .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); }
+        .skill-tag i { font-size: 0.7rem; }
 
-        .pref-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 18px;
-            font-size: 14px;
+        /* Toast */
+        .toast-msg { 
+            position: fixed; 
+            bottom: 2rem; 
+            right: 2rem; 
+            background: var(--white); 
+            padding: 1rem 1.5rem; 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow-xl); 
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            z-index: 1100; 
+            animation: slideIn 0.3s ease; 
+            border-left: 4px solid var(--primary);
         }
+        body.dark .toast-msg { background: var(--gray-800); color: white; }
+        @keyframes slideIn { from { transform: translateX(400px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-        .btn-outline-sm {
-            background: transparent;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
-            border-radius: 40px;
-            padding: 8px 0;
-            width: 100%;
-            font-weight: 600;
-            margin-top: 16px;
-            cursor: pointer;
-            transition: 0.2s;
+        /* Notifications Dropdown */
+        .notif-dropdown { 
+            position: absolute; 
+            top: 70px; 
+            right: 100px; 
+            width: 320px; 
+            background: var(--white); 
+            border-radius: var(--radius-lg); 
+            box-shadow: var(--shadow-xl); 
+            display: none; 
+            z-index: 200; 
+            max-height: 400px; 
+            overflow-y: auto; 
         }
+        body.dark .notif-dropdown { background: var(--gray-100); }
+        .notif-dropdown.show { display: block; }
+        .notif-item { 
+            padding: 1rem; 
+            border-bottom: 1px solid var(--gray-200); 
+            cursor: pointer; 
+            transition: var(--transition); 
+        }
+        .notif-item:hover { background: var(--gray-100); }
+        .notif-item.unread { background: var(--primary-light); }
+        body.dark .notif-item.unread { background: #334155; }
 
-        .btn-outline-sm:hover {
-            background: var(--primary-blue);
+        /* Modal */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background: rgba(0,0,0,0.5); 
+            backdrop-filter: blur(4px); 
+            z-index: 1000; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .modal-content { 
+            background: var(--white); 
+            border-radius: var(--radius-xl); 
+            padding: 2rem; 
+            width: 90%; 
+            max-width: 500px; 
+            animation: fadeIn 0.3s ease;
+        }
+        body.dark .modal-content { background: var(--gray-100); }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gradient);
             color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+            border: none;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                position: fixed;
-                z-index: 1000;
-            }
-            .main-content {
-                padding: 20px;
-            }
-            .hero-flex {
-                flex-direction: column;
-                align-items: start;
-            }
-            .edit-profile-btn {
-                margin-left: 0;
-                margin-top: 12px;
-            }
+            .sidebar { transform: translateX(-100%); position: fixed; }
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; padding: 1rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .charts-row { grid-template-columns: 1fr; }
+            .chat-container { flex-direction: column; }
+            .chat-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--gray-200); }
+            .search-bar input { width: 120px; }
+            .top-actions { gap: 0.5rem; }
+            .mobile-menu-btn { display: flex; }
         }
-        .lin{
-  text-decoration: none;
-
-  }
-  
-
-
-  
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .wallet-actions { flex-direction: column; }
+            .wallet-actions button { width: 100%; }
+        }
     </style>
 </head>
 <body>
-    
-<!-- NAVBAR -->
-  <nav class="nav">
-  <div class="logo">
-    <a href="../home.html">
-      <img src="../../assets/images/logo.png" alt="Logo">
-    </a>
-  </div>
-
-
-  <ul class="nav-links">
-    <li><a href="../work.html">Find Work</a></li>
-    <li><a href="../hie-talent.html">Hire Talent</a></li>
-    <li><a href="#about-section">About</a></li>
-    <li><a href="#contact-section">Contact</a></li>
-  </ul>
-<div class="user-menu-container">
-    <div class="notifications animated-bell">
-        <i class="fa-solid fa-bell bell-icon"></i>
-        <i class="fa-solid fa-circle bell-dot"></i>
-    </div>
-    
-    <div class="profile-wrapper">
-        <div id="nav-avatar-circle" style="width:36px;height:36px;border-radius:50%;background:#0090E0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;cursor:pointer;">?</div>
-        <div class="nav-dropdown">
-            <span id="nav-user-name" style="padding:10px 16px;display:block;font-weight:600;color:#051923;border-bottom:1px solid #eee;"></span>
-            <a href="dash-client.html">Dashboard</a>
-            <a href="#" onclick="Auth.logout();return false;" style="color:#e53e3e;">Logout</a>
-        </div>
-    </div>
-</div>
-</nav>
-
-    <aside class="sidebar">
-        <div class="logo">
-           
-            <div>
-                
+<div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-laptop-code"></i></div>
+                <div class="logo-text">TaskHunt <span class="role-badge">Freelancer</span></div>
             </div>
         </div>
-        <nav id="mainNav">
-            <ul id="mainNavList">
-                <li class="active" data-page="dashboard"><i class="fas fa-chart-line"></i> Dashboard</li>
-                <li data-page="my-jobs"><i class="fas fa-briefcase"></i> My Jobs</li>
-                <li data-page="freelancers"><i class="fas fa-users"></i> Find Freelancers</li>
-                <li data-page="hired"><i class="fas fa-user-check"></i> Hired</li>
-                <li data-page="payments"><i class="fas fa-credit-card"></i> Payments</li>
-                <li data-page="settings"><i class="fas fa-cog"></i> Settings</li>
-                <hr>
-                <a href="my-profile" class="lin"><li > My Profile</li></a>
-            </ul>
-        </nav>
-
-        <nav id="profileNav" style="display:none;">
-            <ul id="profileNavList">
-                <li data-action="back"><i class="fas fa-arrow-left"></i> Back</li>
-                <li class="active" data-page="profile"><i class="fas fa-user"></i> Overview</li>
-                <li data-page="my-jobs"><i class="fas fa-briefcase"></i> My Jobs</li>
-                <li data-page="settings"><i class="fas fa-sliders-h"></i> Profile Settings</li>
-            </ul>
-        </nav>
+        <div class="nav-menu">
+            <div class="nav-item active" data-section="home"><i class="fas fa-chart-line"></i><span>Dashboard</span></div>
+            <div class="nav-item" data-section="profile"><i class="fas fa-user-circle"></i><span>Profile</span></div>
+            <div class="nav-item" data-section="proposals"><i class="fas fa-file-signature"></i><span>My Proposals</span></div>
+            <div class="nav-item" data-section="posts"><i class="fas fa-briefcase"></i><span>My Services</span></div>
+            <div class="nav-item" data-section="chat"><i class="fas fa-comments"></i><span>Chat</span></div>
+            <div class="nav-item" data-section="wallet"><i class="fas fa-wallet"></i><span>Wallet</span></div>
+        </div>
     </aside>
 
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+
+    <!-- Main Content -->
     <main class="main-content">
-     
+        <div class="top-bar">
+            <div class="page-title">
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubtitle">Welcome back, John Doe!</p>
+            </div>
+            <div class="top-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search jobs..." id="globalSearch">
+                </div>
+                <div class="notification-btn" id="notifBtn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notifCount">0</span>
+                </div>
+                <div class="dark-toggle" id="darkToggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Avatar" class="user-avatar">
+            </div>
+        </div>
 
-        <div id="pageContent"></div>
+        <div id="notifDropdown" class="notif-dropdown"></div>
+
+        <!-- Home Section -->
+        <div id="homeSection" class="section active">
+            <div class="stats-grid" id="statsGrid"></div>
+            <div class="charts-row">
+                <div class="chart-card"><h3><i class="fas fa-chart-pie"></i> Proposal Status</h3><canvas id="proposalsChart"></canvas></div>
+                <div class="chart-card"><h3><i class="fas fa-chart-line"></i> Monthly Earnings</h3><canvas id="earningsChart"></canvas></div>
+            </div>
+            <div class="table-container">
+                <div class="table-header"><h3><i class="fas fa-clock"></i> Recent Activity</h3></div>
+                <div id="recentActivity" style="padding: 1rem 1.5rem;"></div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div id="profileSection" class="section">
+            <div class="table-container" style="padding: 2rem;">
+                <div class="profile-header">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Profile" class="profile-avatar" id="profileImg" onclick="document.getElementById('avatarInput').click()">
+                    <input type="file" id="avatarInput" style="display:none" accept="image/*">
+                    <div>
+                        <h2 style="color: var(--gray-800);">John Doe <span class="badge badge-accepted">Top Rated</span></h2>
+                        <p style="margin-top: 0.5rem;"><i class="fas fa-envelope"></i> john.doe@taskhunt.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 987-6543</p>
+                        <p><i class="fas fa-map-marker-alt"></i> New York, NY</p>
+                        <p><i class="fas fa-star" style="color: #F59E0B;"></i> 4.9 Rating • 45+ Completed Jobs</p>
+                    </div>
+                </div>
+                <h3>Skills & Expertise</h3>
+                <div class="skills-container" id="skillsContainer"></div>
+                <button class="btn-primary" style="margin-top: 1rem;" onclick="addSkill()"><i class="fas fa-plus"></i> Add Skill</button>
+                <hr style="margin: 1.5rem 0; border-color: var(--gray-200);">
+                <h3>About Me</h3>
+                <p style="margin-top: 0.5rem; color: var(--gray-600); line-height: 1.6;" id="bioText">Full-stack developer with 5+ years experience. Specialized in React, Node.js, and MongoDB. Passionate about building amazing web applications that solve real problems.</p>
+                <button class="btn-primary" style="margin-top: 1rem;" onclick="editBio()"><i class="fas fa-edit"></i> Edit Bio</button>
+                <hr style="margin: 1.5rem 0; border-color: var(--gray-200);">
+                <h3>Change Password</h3>
+                <form id="passwordForm" style="margin-top: 1rem;">
+                    <div class="form-group"><input type="password" placeholder="Current Password" required></div>
+                    <div class="form-group"><input type="password" placeholder="New Password" required></div>
+                    <div class="form-group"><input type="password" placeholder="Confirm Password" required></div>
+                    <button type="submit" class="btn-primary">Update Password</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Proposals Section -->
+        <div id="proposalsSection" class="section">
+            <div class="cards-grid" id="proposalsGrid"></div>
+        </div>
+
+        <!-- Posts Section -->
+        <div id="postsSection" class="section">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3><i class="fas fa-briefcase"></i> My Service Posts</h3>
+                    <button class="btn-primary" onclick="openPostModal()"><i class="fas fa-plus"></i> Create New Post</button>
+                </div>
+                <div id="postsGrid" class="cards-grid" style="padding: 1.5rem;"></div>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div id="chatSection" class="section">
+            <div class="chat-container">
+                <div class="chat-sidebar" id="chatSidebar"></div>
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <span><i class="fas fa-comments"></i> <span id="chatWithName">Select a conversation</span></span>
+                        <span id="onlineStatus"></span>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div style="text-align: center; color: var(--gray-500); padding: 2rem;">Select a chat to start messaging</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type a message...">
+                        <div class="file-attach" onclick="alert('📎 File upload feature coming soon!')"><i class="fas fa-paperclip"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wallet Section -->
+        <div id="walletSection" class="section">
+            <div class="wallet-balance">
+                <h3 id="walletBalance">$12,450</h3>
+                <p>Available Balance</p>
+                <div class="wallet-actions">
+                    <button class="btn-primary" onclick="withdrawFunds()"><i class="fas fa-minus"></i> Withdraw</button>
+                    <button class="btn-primary" onclick="transferFunds()"><i class="fas fa-exchange-alt"></i> Transfer</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <div class="table-header"><h3><i class="fas fa-history"></i> Transaction History</h3></div>
+                <table>
+                    <thead>
+                        <tr><th>Date</th><th>Description</th><th>Amount</th><th>Status</th></tr>
+                    </thead>
+                    <tbody id="transactionsList"></tbody>
+                </table>
+            </div>
+        </div>
     </main>
+</div>
 
-    <!-- Post Job Modal -->
-    <div id="postJobModal" class="modal">
-        <div class="modal-content">
-            <h2>Post New Job</h2>
-            <form id="postJobForm">
-                <div class="form-group">
-                    <label>Job Title *</label>
-                    <input type="text" id="jobTitle" required placeholder="e.g., Senior React Developer">
-                </div>
-                <div class="form-group">
-                    <label>Description *</label>
-                    <textarea id="jobDesc" rows="4" required placeholder="Describe the job requirements, responsibilities, etc."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Budget ($) *</label>
-                    <input type="number" id="jobBudget" required placeholder="500">
-                </div>
-                <div class="form-group">
-                    <label>Category *</label>
-                    <select id="jobCategory">
-                        <option>Web Development</option>
-                        <option>Mobile Development</option>
-                        <option>Design</option>
-                        <option>Writing</option>
-                        <option>Marketing</option>
-                        <option>Data Science</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Duration</label>
-                    <select id="jobDuration">
-                        <option>Less than 1 week</option>
-                        <option>1-2 weeks</option>
-                        <option>1 month</option>
-                        <option>1-3 months</option>
-                        <option>3+ months</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary">Post Job</button>
-                <button type="button" onclick="closeModal('postJobModal')" style="margin-left: 10px;">Cancel</button>
-            </form>
-        </div>
+<!-- Post Modal -->
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <h2 style="margin-bottom: 1rem; color: var(--primary);"><i class="fas fa-plus-circle"></i> Create Service Post</h2>
+        <form id="postForm">
+            <div class="form-group"><label>Service Title</label><input type="text" id="postTitle" required placeholder="e.g., Full Stack Web Development"></div>
+            <div class="form-group"><label>Description</label><textarea id="postDesc" rows="3" required placeholder="Describe your service..."></textarea></div>
+            <div class="form-group"><label>Price ($)</label><input type="number" id="postPrice" required placeholder="500"></div>
+            <div class="form-group"><label>Delivery Time</label><input type="text" id="postDelivery" placeholder="e.g., 3 days, 1 week"></div>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <button type="submit" class="btn-primary">Publish</button>
+                <button type="button" onclick="closeModal()" class="btn-primary" style="background: var(--danger);">Cancel</button>
+            </div>
+        </form>
     </div>
+</div>
 
-    <!-- Hire Freelancer Modal -->
-    <div id="hireModal" class="modal">
-        <div class="modal-content">
-            <h2>Hire Freelancer</h2>
-            <form id="hireForm">
-                <div class="form-group">
-                    <label>Freelancer Name</label>
-                    <input type="text" id="hireFreelancerName" readonly>
+<script>
+    // ==================== FREELANCER DASHBOARD JAVASCRIPT ====================
+    
+    // Mock Data
+    let freelancerProposals = [
+        { id: 1, jobTitle: 'E-commerce Website Development', client: 'Alex Parker', amount: 3200, delivery: '2 weeks', message: 'I have 5+ years experience building e-commerce sites. I can deliver high-quality work.', status: 'pending', date: '2024-03-10' },
+        { id: 2, jobTitle: 'Mobile App UI/UX Design', client: 'Sarah Johnson', amount: 1800, delivery: '1 week', message: 'Expert in Figma and Adobe XD. I will create modern, user-friendly designs.', status: 'accepted', date: '2024-03-05' },
+        { id: 3, jobTitle: 'SEO Content Writing', client: 'Mike Brown', amount: 500, delivery: '3 days', message: 'SEO optimized content that ranks on Google.', status: 'rejected', date: '2024-03-08' },
+        { id: 4, jobTitle: 'WordPress Website', client: 'Emily Wilson', amount: 2500, delivery: '10 days', message: 'Custom WordPress theme development', status: 'pending', date: '2024-03-12' }
+    ];
+
+    let freelancerPosts = [
+        { id: 1, title: 'Full Stack Web Development', description: 'Complete web application development with React, Node.js, and MongoDB', price: 1500, delivery: '2 weeks', status: 'Active' },
+        { id: 2, title: 'UI/UX Design Services', description: 'Modern, responsive designs for web and mobile apps', price: 800, delivery: '1 week', status: 'Active' },
+        { id: 3, title: 'WordPress Development', description: 'Custom WordPress themes and plugins', price: 1200, delivery: '1 week', status: 'Active' }
+    ];
+
+    let freelancerBalance = 12450;
+    let freelancerTransactions = [
+        { date: '2024-03-20', desc: 'Payment from Alex Parker - E-commerce Website', amount: 3200, status: 'Completed' },
+        { date: '2024-03-15', desc: 'Withdrawal to Bank Account', amount: -500, status: 'Completed' },
+        { date: '2024-03-10', desc: 'Payment from Sarah Johnson - Mobile App Design', amount: 1800, status: 'Completed' },
+        { date: '2024-03-05', desc: 'Deposit - Project Milestone', amount: 1200, status: 'Completed' }
+    ];
+
+    let freelancerNotifications = [
+        { id: 1, message: '✅ Your proposal was accepted by Alex Parker for "E-commerce Website"', time: '1 hour ago', read: false },
+        { id: 2, message: '❌ Your proposal was rejected by Mike Brown for "SEO Content Writing"', time: '2 hours ago', read: false },
+        { id: 3, message: '💬 New message from Sarah Johnson', time: '3 hours ago', read: true }
+    ];
+
+    let freelancerChats = {
+        1: [
+            { sender: 'client', text: 'Hi John! I really like your proposal. Can you start next week?', time: new Date('2024-03-19T10:30:00') },
+            { sender: 'freelancer', text: 'Hi Alex! Yes, I can start next Monday. I will deliver within 2 weeks.', time: new Date('2024-03-19T10:35:00') },
+            { sender: 'client', text: 'Perfect! Let\'s proceed.', time: new Date('2024-03-19T10:40:00') }
+        ],
+        2: [
+            { sender: 'client', text: 'Hi John, when can you send the first draft?', time: new Date('2024-03-18T14:20:00') },
+            { sender: 'freelancer', text: 'I will have it ready by Friday.', time: new Date('2024-03-18T14:25:00') }
+        ]
+    };
+    
+    let activeChat = null;
+    let skills = ['React.js', 'Node.js', 'Python', 'MongoDB', 'Tailwind CSS'];
+
+    // Utility Functions
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = 'toast-msg';
+        toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}" style="color: var(--primary);"></i> ${message}`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    function updateNotifBadge() {
+        const unread = freelancerNotifications.filter(n => !n.read).length;
+        document.getElementById('notifCount').innerText = unread;
+    }
+
+    function addNotification(message) {
+        freelancerNotifications.unshift({ id: Date.now(), message: message, time: 'Just now', read: false });
+        updateNotifBadge();
+        showToast(message, 'info');
+        renderNotifDropdown();
+        renderRecentActivity();
+    }
+
+    function renderNotifDropdown() {
+        const dropdown = document.getElementById('notifDropdown');
+        dropdown.innerHTML = freelancerNotifications.map(n => `
+            <div class="notif-item ${!n.read ? 'unread' : ''}" onclick="markNotifRead(${n.id})">
+                <strong>${n.message}</strong><br><small>${n.time}</small>
+            </div>
+        `).join('');
+    }
+
+    function markNotifRead(id) {
+        const n = freelancerNotifications.find(n => n.id === id);
+        if (n) n.read = true;
+        updateNotifBadge();
+        renderNotifDropdown();
+    }
+
+    // Render Functions
+    function renderStats() {
+        const pending = freelancerProposals.filter(p => p.status === 'pending').length;
+        const accepted = freelancerProposals.filter(p => p.status === 'accepted').length;
+        const totalEarned = freelancerTransactions.filter(t => t.amount > 0).reduce((s, t) => s + t.amount, 0);
+        const completedJobs = 45;
+        
+        document.getElementById('statsGrid').innerHTML = `
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-file-signature"></i></div><div class="stat-value">${freelancerProposals.length}</div><div class="stat-label">Total Proposals</div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-value">${pending}</div><div class="stat-label">Pending</div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-check-circle"></i></div><div class="stat-value">${accepted}</div><div class="stat-label">Accepted</div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-trophy"></i></div><div class="stat-value">${completedJobs}</div><div class="stat-label">Completed Jobs</div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-dollar-sign"></i></div><div class="stat-value">$${totalEarned.toLocaleString()}</div><div class="stat-label">Total Earned</div></div>
+            <div class="stat-card"><div class="stat-icon"><i class="fas fa-wallet"></i></div><div class="stat-value">$${freelancerBalance.toLocaleString()}</div><div class="stat-label">Wallet Balance</div></div>
+        `;
+    }
+
+    function renderProposals() {
+        const container = document.getElementById('proposalsGrid');
+        const statusLabels = { pending: 'Pending', accepted: 'Accepted', rejected: 'Rejected' };
+        container.innerHTML = freelancerProposals.map(p => `
+            <div class="proposal-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: var(--primary);">${p.jobTitle}</h3>
+                        <small style="color: var(--gray-500);"><i class="fas fa-user"></i> Client: ${p.client}</small>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 1.3rem; font-weight: 700; color: var(--primary);">$${p.amount}</div>
+                        <small><i class="fas fa-clock"></i> ${p.delivery}</small>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Job Title</label>
-                    <select id="hireJobSelect" required>
-                        <option value="">Select a job to assign</option>
-                    </select>
+                <p style="color: var(--gray-600); margin: 0.75rem 0; line-height: 1.5;">"${p.message}"</p>
+                <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                    <span class="badge badge-${p.status}">${statusLabels[p.status]}</span>
+                    <small><i class="fas fa-calendar"></i> ${p.date}</small>
                 </div>
-                <div class="form-group">
-                    <label>Offer Amount ($)</label>
-                    <input type="number" id="hireAmount" required>
+            </div>
+        `).join('');
+        if (freelancerProposals.length === 0) {
+            container.innerHTML = '<div style="text-align: center; padding: 3rem; color: var(--gray-500);">No proposals sent yet. Start applying to jobs!</div>';
+        }
+    }
+
+    function renderPosts() {
+        const container = document.getElementById('postsGrid');
+        container.innerHTML = freelancerPosts.map(post => `
+            <div class="post-card">
+                <h3 style="color: var(--primary);">${post.title}</h3>
+                <p style="color: var(--gray-600); margin: 0.5rem 0; line-height: 1.5;">${post.description}</p>
+                <div style="display: flex; gap: 1rem; margin: 0.75rem 0;">
+                    <div><strong>Price:</strong> $${post.price}</div>
+                    <div><strong>Delivery:</strong> ${post.delivery}</div>
                 </div>
-                <div class="form-group">
-                    <label>Message to Freelancer</label>
-                    <textarea id="hireMessage" rows="3" placeholder="Explain the project details..."></textarea>
+                <span class="badge badge-active">${post.status}</span>
+            </div>
+        `).join('');
+    }
+
+    function renderTransactions() {
+        const tbody = document.getElementById('transactionsList');
+        tbody.innerHTML = freelancerTransactions.map(t => `
+            <tr>
+                <td>${t.date}</td>
+                <td>${t.desc}</td>
+                <td style="color: ${t.amount > 0 ? '#10B981' : '#EF4444'}; font-weight: 600;">${t.amount > 0 ? '+' : ''}$${Math.abs(t.amount)}</td>
+                <td><span class="badge badge-accepted">${t.status}</span></td>
+            </tr>
+        `).join('');
+    }
+
+    function renderRecentActivity() {
+        const container = document.getElementById('recentActivity');
+        container.innerHTML = freelancerNotifications.slice(0, 5).map(n => `
+            <div style="padding: 0.75rem 0; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 0.75rem;">
+                <i class="fas fa-circle" style="font-size: 0.5rem; color: var(--primary);"></i>
+                <div style="flex: 1;">
+                    <div style="font-size: 0.85rem;">${n.message}</div>
+                    <div style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">${n.time}</div>
                 </div>
-                <button type="submit" class="btn-primary">Send Offer</button>
-                <button type="button" onclick="closeModal('hireModal')" style="margin-left: 10px;">Cancel</button>
-            </form>
-        </div>
-    </div>
+            </div>
+        `).join('');
+    }
 
-    <div id="notificationsDropdown" class="notifications-dropdown"></div>
-    <input type="file" id="profileImgUpload" style="display:none" accept="image/*">
+    function renderSkills() {
+        const container = document.getElementById('skillsContainer');
+        container.innerHTML = skills.map(s => `
+            <span class="skill-tag" onclick="removeSkill('${s}')">
+                ${s} <i class="fas fa-times"></i>
+            </span>
+        `).join('');
+    }
 
-    <script src="../../assets/js/api.js"></script>
-    <script>
-        // ── Auth guard ────────────────────────────────────────────
-        const _authUser = Auth.user();
-        if (!_authUser) window.location.href = '../login.html';
-
-        // ── Nav init ──────────────────────────────────────────────
-        if (_authUser) {
-            const ini = _authUser.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-            document.getElementById('nav-avatar-circle').textContent = ini;
-            document.getElementById('nav-user-name').textContent = _authUser.name;
-        }
-
-        // ========== CLIENT DASHBOARD STATE ==========
-        let currentPage = 'dashboard';
-        let selectedFreelancer = null;
-
-        // Client's posted jobs — starts empty, loaded from API
-        let myJobs = [];
-
-        // Hired freelancers
-        let hiredFreelancers = [
-            { id: 1, name: 'Alex Johnson', skill: 'React Developer', job: 'E-commerce Website Development', budget: 3500, startDate: '2024-03-15', status: 'In Progress', rating: 4.8 },
-            { id: 2, name: 'Maria Garcia', skill: 'UI Designer', job: 'Mobile App UI/UX Design', budget: 1200, startDate: '2024-03-10', status: 'In Progress', rating: 4.9 }
+    function renderChatSidebar() {
+        const clients = [
+            { id: 1, name: 'Alex Parker', avatar: 'AP', lastMessage: 'Let\'s proceed' },
+            { id: 2, name: 'Sarah Johnson', avatar: 'SJ', lastMessage: 'When can you send?' }
         ];
+        const sidebar = document.getElementById('chatSidebar');
+        sidebar.innerHTML = clients.map(c => `
+            <div class="chat-conversation ${activeChat?.id === c.id ? 'active' : ''}" onclick="openChat(${c.id}, '${c.name}')">
+                <div class="chat-avatar">${c.avatar}</div>
+                <div style="flex: 1;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <strong>${c.name}</strong>
+                        <i class="fas fa-circle" style="font-size: 0.6rem; color: #10B981;"></i>
+                    </div>
+                    <p style="font-size: 0.7rem; color: var(--gray-500); margin-top: 0.25rem;">${c.lastMessage}</p>
+                </div>
+            </div>
+        `).join('');
+    }
 
-        // Available freelancers (for hiring)
-        let freelancers = [
-            { id: 1, name: 'John Doe', title: 'Full Stack Developer', skills: ['React', 'Node.js', 'Python'], rating: 4.9, hourlyRate: 45, completedJobs: 127, avatar: 'JD' },
-            { id: 2, name: 'Sarah Smith', title: 'UI/UX Designer', skills: ['Figma', 'Adobe XD', 'UI Design'], rating: 4.8, hourlyRate: 35, completedJobs: 89, avatar: 'SS' },
-            { id: 3, name: 'Mike Chen', title: 'WordPress Expert', skills: ['WordPress', 'PHP', 'CSS'], rating: 4.7, hourlyRate: 30, completedJobs: 156, avatar: 'MC' },
-            { id: 4, name: 'Emily Brown', title: 'Content Writer', skills: ['SEO Writing', 'Blog Posts', 'Copywriting'], rating: 4.9, hourlyRate: 25, completedJobs: 234, avatar: 'EB' }
-        ];
-
-        // Payment history
-        let payments = [
-            { id: 1, freelancer: 'Alex Johnson', job: 'E-commerce Website Development', amount: 1500, date: '2024-03-20', status: 'Paid' },
-            { id: 2, freelancer: 'Maria Garcia', job: 'Mobile App UI/UX Design', amount: 600, date: '2024-03-18', status: 'Paid' },
-            { id: 3, freelancer: 'John Doe', job: 'API Integration', amount: 800, date: '2024-03-25', status: 'Pending' }
-        ];
-
-        let notifications = [
-            { id: 1, message: 'New proposal received for "E-commerce Website Development"', time: '5 min ago', read: false },
-            { id: 2, message: 'Alex Johnson completed milestone 1', time: '1 hour ago', read: false },
-            { id: 3, message: 'Payment of $1500 was successful', time: '2 hours ago', read: false }
-        ];
-
-        // Helper Functions
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}" style="color: ${type === 'success' ? '#28a745' : '#dc3545'}"></i> ${message}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
+    function openChat(id, name) {
+        activeChat = { id, name };
+        document.getElementById('chatWithName').innerHTML = `<i class="fas fa-user"></i> ${name}`;
+        document.getElementById('onlineStatus').innerHTML = `<i class="fas fa-circle" style="color: #10B981; font-size: 0.6rem;"></i> Online`;
+        
+        const messages = freelancerChats[id] || [];
+        const container = document.getElementById('chatMessages');
+        if (messages.length === 0) {
+            container.innerHTML = '<div style="text-align: center; color: var(--gray-500); padding: 2rem;">No messages yet. Start the conversation!</div>';
+        } else {
+            container.innerHTML = messages.map(m => `
+                <div class="message ${m.sender === 'freelancer' ? 'sent' : 'received'}">
+                    ${m.text}
+                    <div style="font-size: 0.6rem; opacity: 0.7; margin-top: 0.25rem;">${new Date(m.time).toLocaleTimeString()}</div>
+                </div>
+            `).join('');
         }
+        container.scrollTop = container.scrollHeight;
+        renderChatSidebar();
+    }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
+    function sendMessage() {
+        if (!activeChat) { showToast('Select a chat first', 'error'); return; }
+        const input = document.getElementById('chatInput');
+        const text = input.value.trim();
+        if (!text) return;
+        
+        if (!freelancerChats[activeChat.id]) freelancerChats[activeChat.id] = [];
+        freelancerChats[activeChat.id].push({ sender: 'freelancer', text: text, time: new Date() });
+        openChat(activeChat.id, activeChat.name);
+        input.value = '';
+        showToast('Message sent!', 'success');
+    }
 
-        // Post new job
-        function postJob(jobData) {
-            const newJob = {
-                id: Date.now(),
-                title: jobData.title,
-                description: jobData.description,
-                budget: parseInt(jobData.budget),
-                status: 'Open',
-                category: jobData.category,
-                posted: new Date().toISOString().split('T')[0],
-                proposals: 0
-            };
-            myJobs.push(newJob);
-            showToast('Job posted successfully! Freelancers can now apply');
-            renderCurrentPage();
-        }
-
-        // Delete a job
-        function deleteJob(id) {
-            const job = myJobs.find(j => j.id === id);
-            if (job && job.status === 'Open') {
-                if (confirm('Delete this job posting?')) {
-                    myJobs = myJobs.filter(j => j.id !== id);
-                    showToast('Job deleted');
-                    renderCurrentPage();
-                }
+    // Wallet Functions
+    function withdrawFunds() { 
+        let amt = prompt('Enter amount to withdraw:'); 
+        if (amt && !isNaN(amt) && amt > 0) {
+            if (amt <= freelancerBalance) {
+                freelancerBalance -= parseInt(amt); 
+                document.getElementById('walletBalance').innerText = `$${freelancerBalance.toLocaleString()}`; 
+                freelancerTransactions.unshift({ 
+                    date: new Date().toISOString().split('T')[0], 
+                    desc: 'Withdrawal to Bank Account', 
+                    amount: -parseInt(amt), 
+                    status: 'Completed' 
+                }); 
+                renderTransactions(); 
+                renderStats();
+                showToast(`$${amt} withdrawn successfully!`, 'success'); 
             } else {
-                showToast('Cannot delete job that is already in progress', 'error');
+                showToast('Insufficient balance!', 'error');
             }
         }
-
-        // View proposals for a job
-        function viewProposals(jobId) {
-            const job = myJobs.find(j => j.id === jobId);
-            showToast(`You have ${job.proposals} proposals for "${job.title}"`, 'success');
-        }
-
-        // Hire freelancer
-        function openHireModal(freelancer) {
-            selectedFreelancer = freelancer;
-            document.getElementById('hireFreelancerName').value = freelancer.name;
-            
-            // Populate job select with open jobs
-            const jobSelect = document.getElementById('hireJobSelect');
-            jobSelect.innerHTML = '<option value="">Select a job</option>';
-            myJobs.filter(j => j.status === 'Open').forEach(job => {
-                jobSelect.innerHTML += `<option value="${job.id}">${job.title} ($${job.budget})</option>`;
-            });
-            
-            document.getElementById('hireAmount').value = '';
-            document.getElementById('hireMessage').value = '';
-            document.getElementById('hireModal').style.display = 'flex';
-        }
-
-        function hireFreelancer(jobId, amount, message) {
-            const job = myJobs.find(j => j.id == jobId);
-            if (!job) {
-                showToast('Job not found', 'error');
-                return false;
-            }
-            
-            // Add to hired list
-            const newHire = {
-                id: Date.now(),
-                name: selectedFreelancer.name,
-                skill: selectedFreelancer.title,
-                job: job.title,
-                budget: parseInt(amount),
-                startDate: new Date().toISOString().split('T')[0],
-                status: 'In Progress',
-                rating: selectedFreelancer.rating
-            };
-            hiredFreelancers.push(newHire);
-            
-            // Update job status
-            job.status = 'In Progress';
-            
-            // Add notification
-            notifications.unshift({
-                id: Date.now(),
-                message: `You hired ${selectedFreelancer.name} for "${job.title}"`,
-                time: 'Just now',
-                read: false
-            });
-            
-            showToast(`Offer sent to ${selectedFreelancer.name}!`);
-            return true;
-        }
-
-        // Complete job and release payment
-        function completeJob(hireId) {
-            if (confirm('Mark this job as completed and release final payment?')) {
-                const hire = hiredFreelancers.find(h => h.id === hireId);
-                if (hire) {
-                    hire.status = 'Completed';
-                    // Add to payments
-                    payments.unshift({
-                        id: Date.now(),
-                        freelancer: hire.name,
-                        job: hire.job,
-                        amount: hire.budget,
-                        date: new Date().toISOString().split('T')[0],
-                        status: 'Pending'
-                    });
-                    showToast(`Job completed! Payment of $${hire.budget} will be processed`);
-                    renderCurrentPage();
-                }
-            }
-        }
-
-        // ========== MODERN PROFILE RENDER ==========
-        function renderModernProfile() {
-            const totalSpent = payments.filter(p => p.status === 'Paid').reduce((sum, p) => sum + p.amount, 0);
-            const activeProjects = hiredFreelancers.filter(h => h.status === 'In Progress').length;
-            const openJobsCount = myJobs.filter(j => j.status === 'Open' || j.status === 'open').length;
-            const totalJobs = myJobs.length;
-            const memberYear = _authUser ? new Date(_authUser.created_at || Date.now()).getFullYear() : 2025;
-
-            const profileData = {
-                name: _authUser ? _authUser.name : 'Client',
-                email: _authUser ? _authUser.email : '',
-                bio: _dbUser ? (_dbUser.bio || 'No bio yet — click Edit Profile to add one.') : 'Loading...'
-            };
-
-            const avatarInitials = profileData.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-            return `
-                <div class="profile-new-container">
-                    <div class="profile-left-col">
-                        <div class="profile-hero-card">
-                            <div class="hero-flex">
-                                <div class="profile-avatar-xl">
-                                    <div style="width:128px;height:128px;border-radius:50%;background:#0090E0;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:44px;border:4px solid white;box-shadow:0 12px 24px -8px rgba(0,0,0,0.15);">${avatarInitials}</div>
-                                </div>
-                                <div class="profile-title">
-                                    <h2>${profileData.name} <span class="badge-client"><i class="fas fa-check-circle"></i> Verified Client</span></h2>
-                                    <p>${profileData.email}</p>
-                                    <p><i class="fas fa-briefcase" style="color:#0090E0;"></i> ${totalJobs} jobs posted</p>
-                                </div>
-                                <button class="edit-profile-btn" id="quickEditSettings"><i class="fas fa-pen"></i> Edit Profile</button>
-                            </div>
-                        </div>
-
-                        <div class="stats-grid-mini">
-                            <div class="stat-block"><div class="stat-number">${totalJobs}</div><div class="stat-caption">Jobs Posted</div></div>
-                            <div class="stat-block"><div class="stat-number">${activeProjects}</div><div class="stat-caption">Active Projects</div></div>
-                            <div class="stat-block"><div class="stat-number">${openJobsCount}</div><div class="stat-caption">Open Positions</div></div>
-                            <div class="stat-block"><div class="stat-number">$${totalSpent.toLocaleString()}</div><div class="stat-caption">Total Spent</div></div>
-                        </div>
-
-                        <div class="info-grid">
-                            <div class="bio-card">
-                                <div class="section-title"><i class="fas fa-address-card"></i> About me</div>
-                                <div class="bio-text">${profileData.bio}</div>
-                            </div>
-                            <div class="details-card">
-                                <div class="section-title"><i class="fas fa-id-card"></i> Account Info</div>
-                                <div class="info-row"><div class="info-icon"><i class="fas fa-envelope"></i></div><div class="info-content"><div class="info-label">Email</div><div class="info-text">${profileData.email}</div></div></div>
-                                <div class="info-row"><div class="info-icon"><i class="fas fa-user-tag"></i></div><div class="info-content"><div class="info-label">Role</div><div class="info-text">Client</div></div></div>
-                                <div class="info-row"><div class="info-icon"><i class="fas fa-calendar-alt"></i></div><div class="info-content"><div class="info-label">Member since</div><div class="info-text">${memberYear}</div></div></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="profile-right-col">
-                        <div class="skills-card">
-                            <div class="section-title"><i class="fas fa-code"></i> Hiring expertise</div>
-                            <div class="skills-tags-new">
-                                <span class="skill-tag-new">Web Development</span>
-                                <span class="skill-tag-new">Mobile Apps</span>
-                                <span class="skill-tag-new">UI/UX Design</span>
-                                <span class="skill-tag-new">E-commerce</span>
-                                <span class="skill-tag-new">CMS</span>
-                            </div>
-                            <button class="btn-outline-sm" id="editSkillsBtn"><i class="fas fa-plus-circle"></i> Update Skills</button>
-                        </div>
-                        <div class="pref-card">
-                            <div class="section-title"><i class="fas fa-sliders-h"></i> Hiring preferences</div>
-                            <div class="pref-item"><span>Preferred experience</span><strong>Mid-Level / Senior</strong></div>
-                            <div class="pref-item"><span>Budget range</span><strong>$500 – $15,000</strong></div>
-                            <div class="pref-item"><span>Project types</span><strong>Fixed & Hourly</strong></div>
-                            <div class="pref-item"><span>Response time</span><strong>Within 24h</strong></div>
-                            <button class="btn-outline-sm" id="editPrefsBtn"><i class="fas fa-edit"></i> Edit Preferences</button>
-                        </div>
-                        <div class="contact-card">
-                            <div class="section-title"><i class="fas fa-shield-alt"></i> Account Status</div>
-                            <div class="pref-item"><span>Member since</span><strong>2022</strong></div>
-                            <div class="pref-item"><span>Payment verified</span><strong><i class="fas fa-check-circle" style="color:green;"></i> Yes</strong></div>
-                            <div class="pref-item"><span>Trust score</span><strong>⭐ 4.9/5</strong></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function setupProfileImageUpload() {
-            const fileInput = document.getElementById('profileImgUpload');
-            const trigger = document.getElementById('changePhotoTrigger');
-            if (trigger && fileInput) {
-                trigger.onclick = () => fileInput.click();
-                fileInput.onchange = (e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (ev) => {
-                            const avatarImg = document.getElementById('profileAvatarPreview');
-                            if (avatarImg) avatarImg.src = ev.target.result;
-                            showToast('Profile picture updated!', 'success');
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                };
-            }
-        }
-
-        function attachProfileButtons() {
-            const editBtn = document.getElementById('quickEditSettings');
-            if (editBtn) {
-                editBtn.onclick = () => {
-                    currentPage = 'settings';
-                    toggleSidebarForProfile(false);
-                    document.querySelectorAll('.sidebar nav ul li').forEach(li => li.classList.remove('active'));
-                    const settingsNav = Array.from(document.querySelectorAll('.sidebar nav ul li')).find(li => li.dataset.page === 'settings');
-                    if (settingsNav) settingsNav.classList.add('active');
-                    renderCurrentPage();
-                };
-            }
-            const editSkills = document.getElementById('editSkillsBtn');
-            if (editSkills) editSkills.onclick = () => showToast('Skills updated successfully!', 'success');
-            const editPrefs = document.getElementById('editPrefsBtn');
-            if (editPrefs) editPrefs.onclick = () => showToast('Preferences saved successfully!', 'success');
-        }
-
-        function toggleSidebarForProfile(show) {
-            const mainNav = document.getElementById('mainNav');
-            const profileNav = document.getElementById('profileNav');
-            const logoP = document.querySelector('.logo p');
-            if (show) {
-                if (mainNav) mainNav.style.display = 'none';
-                if (profileNav) profileNav.style.display = 'block';
-                if (logoP) logoP.innerText = 'My Profile';
+    }
+    
+    function transferFunds() { 
+        let amt = prompt('Enter amount to transfer:'); 
+        let email = prompt('Enter recipient email:');
+        if (amt && !isNaN(amt) && amt > 0 && email) {
+            if (amt <= freelancerBalance) {
+                freelancerBalance -= parseInt(amt);
+                document.getElementById('walletBalance').innerText = `$${freelancerBalance.toLocaleString()}`;
+                freelancerTransactions.unshift({
+                    date: new Date().toISOString().split('T')[0],
+                    desc: `Transfer to ${email}`,
+                    amount: -parseInt(amt),
+                    status: 'Pending'
+                });
+                renderTransactions();
+                renderStats();
+                showToast(`$${amt} transferred to ${email}`, 'success');
             } else {
-                if (mainNav) mainNav.style.display = 'block';
-                if (profileNav) profileNav.style.display = 'none';
-                if (logoP) logoP.innerText = 'Client Dashboard';
+                showToast('Insufficient balance!', 'error');
             }
         }
+    }
 
-        // Render Functions (original ones kept intact)
-        function renderDashboard() {
-            const openJobs = myJobs.filter(j => j.status === 'Open').length;
-            const inProgress = hiredFreelancers.filter(h => h.status === 'In Progress').length;
-            const totalSpent = payments.filter(p => p.status === 'Paid').reduce((sum, p) => sum + p.amount, 0);
-            
-            return `
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
-                        <div class="stat-value">${myJobs.length}</div>
-                        <div class="stat-label">Total Jobs Posted</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-file-signature"></i></div>
-                        <div class="stat-value">${openJobs}</div>
-                        <div class="stat-label">Open Positions</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-user-check"></i></div>
-                        <div class="stat-value">${inProgress}</div>
-                        <div class="stat-label">Active Projects</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <div class="stat-value">$${totalSpent.toLocaleString()}</div>
-                        <div class="stat-label">Total Spent</div>
-                    </div>
-                </div>
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-clock"></i> Recent Activity</h3>
-                    </div>
-                    <div id="recentActivity"></div>
-                </div>
-            `;
-        }
+    // Profile Functions
+    function addSkill() { 
+        let newSkill = prompt('Enter skill name:'); 
+        if (newSkill && newSkill.trim()) { 
+            skills.push(newSkill.trim()); 
+            renderSkills(); 
+            showToast('Skill added!', 'success'); 
+        } 
+    }
+    
+    function removeSkill(skill) { 
+        skills = skills.filter(s => s !== skill); 
+        renderSkills(); 
+        showToast('Skill removed', 'info'); 
+    }
+    
+    function editBio() { 
+        let newBio = prompt('Edit your bio:', document.getElementById('bioText').innerText); 
+        if (newBio && newBio.trim()) { 
+            document.getElementById('bioText').innerText = newBio; 
+            showToast('Bio updated!', 'success'); 
+        } 
+    }
 
-        function renderMyJobs() {
-            return `
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-briefcase"></i> My Posted Jobs</h3>
-                        <button class="btn-primary" onclick="openPostJobModal()"><i class="fas fa-plus"></i> Post New Job</button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Category</th>
-                                <th>Budget</th>
-                                <th>Proposals</th>
-                                <th>Status</th>
-                                <th>Posted</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="myJobsTableBody"></tbody>
-                    </table>
-                </div>
-            `;
-        }
+    // Posts
+    function createServicePost(e) {
+        e.preventDefault();
+        const newPost = {
+            id: Date.now(),
+            title: document.getElementById('postTitle').value,
+            description: document.getElementById('postDesc').value,
+            price: parseInt(document.getElementById('postPrice').value),
+            delivery: document.getElementById('postDelivery').value,
+            status: 'Active'
+        };
+        freelancerPosts.unshift(newPost);
+        addNotification(`📢 New service posted: ${newPost.title}`);
+        renderPosts();
+        closeModal();
+        document.getElementById('postForm').reset();
+        showToast('Service post created successfully!', 'success');
+    }
 
-        function renderFreelancers() {
-            const searchTerm = document.getElementById('globalSearch')?.value.toLowerCase() || '';
-            const filtered = freelancers.filter(f => 
-                f.name.toLowerCase().includes(searchTerm) || 
-                f.title.toLowerCase().includes(searchTerm) ||
-                f.skills.some(s => s.toLowerCase().includes(searchTerm))
-            );
-            
-            return `
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-users"></i> Find Freelancers</h3>
-                        <div class="search-filter">
-                            <input type="text" id="freelancerSearch" placeholder="Search by name, skill..." style="width: 220px;">
-                        </div>
-                    </div>
-                    <div class="freelancers-grid" id="freelancersGrid">
-                        ${filtered.map(f => `
-                            <div class="freelancer-card">
-                                <div class="freelancer-header">
-                                    <div class="freelancer-avatar">${f.avatar}</div>
-                                    <div>
-                                        <div class="freelancer-name">${f.name}</div>
-                                        <div class="freelancer-title">${f.title}</div>
-                                    </div>
-                                </div>
-                                <div class="freelancer-skills">
-                                    ${f.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
-                                </div>
-                                <div class="freelancer-rating">
-                                    ${'★'.repeat(Math.floor(f.rating))}${f.rating % 1 ? '½' : ''} (${f.rating}) • ${f.completedJobs} jobs
-                                </div>
-                                <div style="margin: 10px 0;"><strong>$${f.hourlyRate}/hr</strong></div>
-                                <button class="btn-primary" onclick="openHireModal(${JSON.stringify(f).replace(/"/g, '&quot;')})">Hire Now</button>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        }
+    // Charts
+    function initCharts() {
+        const pending = freelancerProposals.filter(p => p.status === 'pending').length;
+        const accepted = freelancerProposals.filter(p => p.status === 'accepted').length;
+        const rejected = freelancerProposals.filter(p => p.status === 'rejected').length;
+        
+        new Chart(document.getElementById('proposalsChart'), { 
+            type: 'doughnut', 
+            data: { 
+                labels: ['Pending', 'Accepted', 'Rejected'], 
+                datasets: [{ 
+                    data: [pending, accepted, rejected], 
+                    backgroundColor: ['#F59E0B', '#10B981', '#EF4444'], 
+                    borderWidth: 0 
+                }] 
+            }, 
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: true,
+                plugins: { legend: { position: 'bottom' } } 
+            } 
+        });
+        
+        new Chart(document.getElementById('earningsChart'), { 
+            type: 'line', 
+            data: { 
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], 
+                datasets: [{ 
+                    label: 'Earnings ($)', 
+                    data: [1200, 2100, 1850, 3200, 2800, 4100], 
+                    borderColor: '#0077B8',
+                    backgroundColor: 'rgba(0, 119, 184, 0.1)',
+                    tension: 0.4, 
+                    fill: true 
+                }] 
+            }, 
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: true,
+                plugins: { legend: { position: 'bottom' } }
+            } 
+        });
+    }
 
-        function renderHired() {
-            return `
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-user-check"></i> Hired Freelancers</h3>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Freelancer</th>
-                                <th>Skill</th>
-                                <th>Project</th>
-                                <th>Budget</th>
-                                <th>Start Date</th>
-                                <th>Status</th>
-                                <th>Rating</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="hiredTableBody"></tbody>
-                    </table>
-                </div>
-            `;
-        }
-
-        function renderPayments() {
-            const totalPaid = payments.filter(p => p.status === 'Paid').reduce((sum, p) => sum + p.amount, 0);
-            const pendingPayments = payments.filter(p => p.status === 'Pending').reduce((sum, p) => sum + p.amount, 0);
-            
-            return `
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
-                        <div class="stat-value">$${totalPaid.toLocaleString()}</div>
-                        <div class="stat-label">Total Paid</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
-                        <div class="stat-value">$${pendingPayments.toLocaleString()}</div>
-                        <div class="stat-label">Pending Payments</div>
-                    </div>
-                </div>
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-credit-card"></i> Payment History</h3>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Freelancer</th>
-                                <th>Project</th>
-                                <th>Amount</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="paymentsTableBody"></tbody>
-                    </table>
-                </div>
-            `;
-        }
-
-        function renderSettings() {
-            const u = _dbUser || _authUser || {};
-            return `
-                <div class="table-container">
-                    <h3><i class="fas fa-building"></i> Account Settings</h3>
-                    <form id="profileForm" style="margin-top: 20px;">
-                        <div class="form-group"><label>Full Name</label><input type="text" id="companyName" value="${u.name || ''}"></div>
-                        <div class="form-group"><label>Email</label><input type="email" id="companyEmail" value="${u.email || ''}" readonly></div>
-                        <div class="form-group"><label>Bio</label><textarea id="companyBio" style="width:100%;padding:12px;border:1px solid #eee;border-radius:12px;font-size:14px;outline:none;" rows="3">${u.bio || ''}</textarea></div>
-                        <button type="submit" class="btn-primary">Update Profile</button>
-                    </form>
-                    <hr style="margin: 30px 0;">
-                    <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
-                    <div class="form-group"><label><input type="checkbox" id="proposalNotif" checked> New proposals on my jobs</label></div>
-                    <div class="form-group"><label><input type="checkbox" id="milestoneNotif" checked> Milestone updates</label></div>
-                    <div class="form-group"><label><input type="checkbox" id="paymentNotif" checked> Payment confirmations</label></div>
-                    <button onclick="saveSettings()" class="btn-primary">Save Preferences</button>
-                </div>
-            `;
-        }
-
-        function renderMyJobsTable() {
-            const tbody = document.getElementById('myJobsTableBody');
-            if (tbody) {
-                tbody.innerHTML = myJobs.map(job => `
-                    <tr>
-                        <td><strong>${job.title}</strong></td>
-                        <td>${job.category}</td>
-                        <td>$${job.budget}</td>
-                        <td>${job.proposals}</td>
-                        <td><span class="status-badge status-${job.status === 'Open' ? 'open' : 'in-progress'}">${job.status}</span></td>
-                        <td>${job.posted}</td>
-                        <td class="action-buttons">
-                            ${job.status === 'Open' ? `
-                                <button class="btn-icon" onclick="viewProposals(${job.id})"><i class="fas fa-users"></i></button>
-                                <button class="btn-icon" onclick="deleteJob(${job.id})"><i class="fas fa-trash"></i></button>
-                            ` : '<span style="color:gray;">In Progress</span>'}
-                        </td>
-                    </tr>
-                `).join('');
-            }
-        }
-
-        function renderHiredTable() {
-            const tbody = document.getElementById('hiredTableBody');
-            if (tbody) {
-                tbody.innerHTML = hiredFreelancers.map(hire => `
-                    <tr>
-                        <td><strong>${hire.name}</strong></td>
-                        <td>${hire.skill}</td>
-                        <td>${hire.job}</td>
-                        <td>$${hire.budget}</td>
-                        <td>${hire.startDate}</td>
-                        <td><span class="status-badge status-${hire.status === 'In Progress' ? 'in-progress' : 'completed'}">${hire.status}</span></td>
-                        <td>${'★'.repeat(Math.floor(hire.rating))}</td>
-                        <td>
-                            ${hire.status === 'In Progress' ? `<button class="btn-icon" onclick="completeJob(${hire.id})"><i class="fas fa-check-circle" style="color:#28a745;"></i></button>` : ''}
-                        </td>
-                    </tr>
-                `).join('');
-            }
-        }
-
-        function renderPaymentsTable() {
-            const tbody = document.getElementById('paymentsTableBody');
-            if (tbody) {
-                tbody.innerHTML = payments.map(p => `
-                    <tr>
-                        <td><strong>${p.freelancer}</strong></td>
-                        <td>${p.job}</td>
-                        <td>$${p.amount}</td>
-                        <td>${p.date}</td>
-                        <td><span class="status-badge status-${p.status === 'Paid' ? 'open' : 'pending'}">${p.status}</span></td>
-                    </tr>
-                `).join('');
-            }
-        }
-
-        function renderRecentActivity() {
-            const container = document.getElementById('recentActivity');
-            if (container) {
-                const activities = notifications.slice(0, 5);
-                container.innerHTML = activities.map(act => `
-                    <div style="padding: 12px 0; border-bottom: 1px solid var(--border-color);">
-                        <i class="fas fa-circle" style="font-size: 8px; color: var(--primary-blue); margin-right: 12px;"></i>
-                        ${act.message}
-                        <div style="font-size: 11px; color: var(--text-gray); margin-top: 4px;">${act.time}</div>
-                    </div>
-                `).join('');
-                if(activities.length === 0) container.innerHTML = '<div style="padding: 12px;">No recent activity</div>';
-            }
-        }
-
-        function renderCurrentPage() {
-            const contentDiv = document.getElementById('pageContent');
-            switch(currentPage) {
-                case 'dashboard':
-                    contentDiv.innerHTML = renderDashboard();
-                    renderRecentActivity();
-                    break;
-                case 'my-jobs':
-                    contentDiv.innerHTML = renderMyJobs();
-                    renderMyJobsTable();
-                    break;
-                case 'freelancers':
-                    contentDiv.innerHTML = renderFreelancers();
-                    const freelancerSearch = document.getElementById('freelancerSearch');
-                    if(freelancerSearch) {
-                        freelancerSearch.addEventListener('input', () => renderCurrentPage());
-                    }
-                    break;
-                case 'hired':
-                    contentDiv.innerHTML = renderHired();
-                    renderHiredTable();
-                    break;
-                case 'payments':
-                    contentDiv.innerHTML = renderPayments();
-                    renderPaymentsTable();
-                    break;
-                case 'settings':
-                    contentDiv.innerHTML = renderSettings();
-                    break;
-                case 'profile':
-                    contentDiv.innerHTML = renderModernProfile();
-                    setupProfileImageUpload();
-                    attachProfileButtons();
-                    break;
-            }
-        }
-
-        function openPostJobModal() {
-            document.getElementById('postJobModal').style.display = 'flex';
-        }
-
-        function saveSettings() {
-            showToast('Settings saved successfully');
-        }
-
-        // Notifications
-        function renderNotifications() {
-            const dropdown = document.getElementById('notificationsDropdown');
-            if (dropdown) {
-                dropdown.innerHTML = notifications.map(notif => `
-                    <div class="notification-item ${!notif.read ? 'unread' : ''}" onclick="markNotificationRead(${notif.id})">
-                        <div><strong>${notif.message}</strong></div>
-                        <div style="font-size: 11px; color: var(--text-gray);">${notif.time}</div>
-                    </div>
-                `).join('');
-                document.getElementById('notificationCount').innerText = notifications.filter(n => !n.read).length;
-            }
-        }
-
-        function markNotificationRead(id) {
-            const n = notifications.find(n => n.id === id);
-            if(n) n.read = true;
-            renderNotifications();
-        }
-
-        // Event Listeners
-        document.getElementById('postJobForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            postJob({
-                title: document.getElementById('jobTitle').value,
-                description: document.getElementById('jobDesc').value,
-                budget: document.getElementById('jobBudget').value,
-                category: document.getElementById('jobCategory').value
+    // Navigation
+    function initNavigation() {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const section = item.dataset.section;
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+                document.getElementById(`${section}Section`).classList.add('active');
+                
+                const titles = { 
+                    home: 'Dashboard', 
+                    profile: 'My Profile', 
+                    proposals: 'My Proposals', 
+                    posts: 'My Services', 
+                    chat: 'Chat', 
+                    wallet: 'Wallet' 
+                };
+                const subtitles = {
+                    home: 'Welcome back, John Doe!',
+                    profile: 'Manage your personal information',
+                    proposals: 'Track all your sent proposals',
+                    posts: 'Manage your service offerings',
+                    chat: 'Communicate with clients',
+                    wallet: 'Manage your earnings'
+                };
+                document.getElementById('pageTitle').innerText = titles[section];
+                document.getElementById('pageSubtitle').innerText = subtitles[section];
+                if (section === 'chat') renderChatSidebar();
             });
-            closeModal('postJobModal');
-            e.target.reset();
         });
+    }
 
-        document.getElementById('hireForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const jobId = document.getElementById('hireJobSelect').value;
-            const amount = document.getElementById('hireAmount').value;
-            const message = document.getElementById('hireMessage').value;
-            
-            if (!jobId) {
-                showToast('Please select a job', 'error');
-                return;
-            }
-            
-            if (hireFreelancer(jobId, amount, message)) {
-                closeModal('hireModal');
-                renderCurrentPage();
-            }
-        });
+    // Modal Functions
+    function openPostModal() { document.getElementById('postModal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('postModal').style.display = 'none'; }
 
-        document.getElementById('profileForm')?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const bio = document.getElementById('companyBio')?.value;
-            try {
-                _dbUser = await updateMe({ bio });
-                showToast('Profile updated successfully');
-            } catch(err) { showToast('Update failed', 'error'); }
-        });
-
-        document.querySelector('.sidebar').addEventListener('click', (e) => {
-            const li = e.target.closest('li');
-            if (!li) return;
-            const action = li.dataset.action;
-            if (action === 'back') {
-                toggleSidebarForProfile(false);
-                document.querySelectorAll('#mainNavList li').forEach(nav => nav.classList.remove('active'));
-                const dashboardNav = document.querySelector('#mainNavList li[data-page="dashboard"]');
-                if (dashboardNav) {
-                    dashboardNav.classList.add('active');
-                    currentPage = 'dashboard';
-                }
-                renderCurrentPage();
-                return;
-            }
-            const page = li.dataset.page;
-            if (page === 'profile') {
-                toggleSidebarForProfile(true);
-                document.querySelectorAll('#profileNavList li').forEach(nav => nav.classList.remove('active'));
-                li.classList.add('active');
-                currentPage = 'profile';
-                renderCurrentPage();
-                return;
-            }
-            if (page) {
-                const isFromProfileNav = li.closest('#profileNav');
-                if (isFromProfileNav) {
-                    // Stay in profile mode, keep Overview active, just change the page content
-                    currentPage = page;
-                } else {
-                    // From main nav - switch to main sidebar
-                    toggleSidebarForProfile(false);
-                    document.querySelectorAll('#mainNavList li').forEach(nav => nav.classList.remove('active'));
-                    li.classList.add('active');
-                    currentPage = page;
-                }
-                renderCurrentPage();
-            }
-        });
-
-        document.getElementById('darkModeToggle')?.addEventListener('click', () => {
+    // Dark Mode
+    function initDarkMode() {
+        const darkToggle = document.getElementById('darkToggle');
+        darkToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark');
+            const icon = darkToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+            localStorage.setItem('freelancerDarkMode', document.body.classList.contains('dark'));
         });
-
-        document.getElementById('notificationBell')?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const dropdown = document.getElementById('notificationsDropdown');
-            dropdown.classList.toggle('show');
-            renderNotifications();
-        });
-
-        document.addEventListener('click', () => {
-            document.getElementById('notificationsDropdown')?.classList.remove('show');
-        });
-
-        // Global search
-        document.getElementById('globalSearch')?.addEventListener('input', () => {
-            if(currentPage === 'freelancers') renderCurrentPage();
-        });
-
-        // ── Load real data from DB ────────────────────────────────
-        let _dbUser = null;
-
-        async function initDashboard() {
-            try {
-                _dbUser = await getMe();
-            } catch(e) {}
-            try {
-                const apiPosts = await getPosts('user_id=' + (_authUser ? _authUser.id : '') + '&status=all&limit=50');
-                myJobs = apiPosts.map(p => ({
-                    id: p.id, title: p.title, description: p.description,
-                    budget: p.budget, status: p.status === 'open' ? 'Open' : 'Closed',
-                    category: p.category,
-                    posted: (p.created_at || '').substring(0, 10),
-                    proposals: p.proposals_count || 0
-                }));
-            } catch(e) {}
-            renderCurrentPage();
+        if (localStorage.getItem('freelancerDarkMode') === 'true') {
+            document.body.classList.add('dark');
+            document.querySelector('#darkToggle i').classList.remove('fa-moon');
+            document.querySelector('#darkToggle i').classList.add('fa-sun');
         }
+    }
 
-        initDashboard();
+    // Mobile Menu
+    function initMobileMenu() {
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        mobileBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !mobileBtn.contains(e.target) && window.innerWidth <= 768) {
+                sidebar.classList.remove('open');
+            }
+        });
+    }
 
-        // Make functions global
-        window.openPostJobModal = openPostJobModal;
-        window.deleteJob = deleteJob;
-        window.viewProposals = viewProposals;
-        window.openHireModal = openHireModal;
-        window.completeJob = completeJob;
-        window.closeModal = closeModal;
-        window.saveSettings = saveSettings;
-        window.markNotificationRead = markNotificationRead;
-    </script> 
+    // Notifications
+    function initNotifications() {
+        const notifBtn = document.getElementById('notifBtn');
+        notifBtn.addEventListener('click', (e) => { 
+            e.stopPropagation(); 
+            document.getElementById('notifDropdown').classList.toggle('show'); 
+        });
+        document.addEventListener('click', () => { 
+            document.getElementById('notifDropdown').classList.remove('show'); 
+        });
+        renderNotifDropdown();
+    }
+
+    // Avatar Upload
+    function initAvatarUpload() {
+        document.getElementById('avatarInput').addEventListener('change', (e) => {
+            if (e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    document.getElementById('profileImg').src = ev.target.result;
+                    showToast('Profile picture updated!', 'success');
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    }
+
+    // Event Listeners
+    document.getElementById('postForm')?.addEventListener('submit', createServicePost);
+    document.getElementById('passwordForm')?.addEventListener('submit', (e) => { 
+        e.preventDefault(); 
+        showToast('Password updated successfully!', 'success'); 
+        e.target.reset();
+    });
+    document.getElementById('chatInput')?.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+    document.getElementById('globalSearch')?.addEventListener('input', (e) => { console.log('Search:', e.target.value); });
+
+    // Initialize
+    function init() {
+        renderStats();
+        renderProposals();
+        renderPosts();
+        renderTransactions();
+        renderRecentActivity();
+        renderSkills();
+        initCharts();
+        initNavigation();
+        initDarkMode();
+        initMobileMenu();
+        initNotifications();
+        initAvatarUpload();
+        updateNotifBadge();
+    }
+    
+    init();
+    
+    // Make functions global for onclick
+    window.addSkill = addSkill;
+    window.removeSkill = removeSkill;
+    window.editBio = editBio;
+    window.withdrawFunds = withdrawFunds;
+    window.transferFunds = transferFunds;
+    window.openChat = openChat;
+    window.sendMessage = sendMessage;
+    window.openPostModal = openPostModal;
+    window.closeModal = closeModal;
+    window.markNotifRead = markNotifRead;
+</script>
 </body>
 </html>

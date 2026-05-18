@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Find Work - TaskHunt</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #0077b8;
@@ -17,6 +18,17 @@
             --primary-blue: #4A90E2;
             --dark-blue: #2C3E50;
             --light-bg: #f8fafc;
+            --c1: #00A8FF;
+            --c2: #0090E0;
+            --c3: #0077B8;
+            --c4: #051923;
+            --c5: #ffffff;
+            --light: #e6f7ff;
+            --text-dark: #1e293b;
+            --text-muted: #5a6874;
+            --border-light: #eef2f8;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.06);
         }
 
         * {
@@ -40,27 +52,20 @@
             align-items: center;
             height: 60px;
             padding: 0 5%;
-            /* عشان ميبقاش لازق في الجوانب */
             background: #ffffff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-
-            /* أمان إضافي */
             box-sizing: border-box;
             overflow: hidden;
-            /* يمنع أي حاجة بداخل الناف بار إنها تمطه */
         }
 
         .logo {
             height: 100%;
-            /* خلي حاوية اللوجو تاخد طول الناف بار */
             display: flex;
             align-items: center;
-            /* سنتر اللوجو عمودياً */
         }
 
         .logo a {
             display: flex;
-            /* يمنع وجود مسافات غريبة تحت اللينك */
             align-items: center;
             height: 100%;
         }
@@ -107,7 +112,6 @@
             transition: all 0.3s ease;
         }
 
-
         .login {
             background: #f0f6ff;
             color: #0077B8;
@@ -123,7 +127,7 @@
         }
 
         .signup:hover {
-            background: #0077B8;
+            background: #005f97;
         }
 
         .menu-toggle {
@@ -369,7 +373,7 @@
             transform: rotate(90deg);
         }
 
-        /* MAIN CONTENT - JOB CARDS */
+        /* ===== NEW MODERN JOB CARD STYLES (replacing up-card) ===== */
         .main-content {
             flex: 1;
             display: flex;
@@ -377,135 +381,153 @@
             gap: 24px;
         }
 
-        .up-card {
+        /* Modern Card Design */
+        .job-card-modern {
+            background: var(--c5);
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.25s ease;
+            border-top: 5px solid var(--c2);
+            border-left: 1px solid var(--border-light);
+            border-right: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .job-card-modern:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border-top-color: var(--c3);
+        }
+
+        .card-header-row {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            background: #fff;
-            border-radius: 24px;
-            padding: 28px;
-            border: 1px solid var(--border);
-            transition: all 0.25s;
-            width: 100%;
-            gap: 20px;
-        }
-
-        .up-card:hover {
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.08);
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .card-main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
             gap: 10px;
         }
 
-        .card-main h3 {
-            margin: 0;
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar-sm {
+            width: 44px;
+            height: 44px;
+            background: var(--light);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: var(--c2);
+            font-size: 20px;
+        }
+
+        .client-details strong {
+            font-size: 15px;
+            color: var(--c4);
+        }
+
+        .time-badge {
+            font-size: 11px;
+            color: #8a99b0;
+        }
+
+        .job-badge {
+            background: var(--c3);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .job-title {
             font-size: 1.35rem;
             font-weight: 700;
-            color: #0f3b6f;
+            color: var(--c3);
+            margin: 12px 0 8px;
             cursor: pointer;
         }
 
-        .card-main h3:hover {
-            color: var(--primary);
-        }
-
-        .client-info {
-            font-size: 0.85rem;
-            color: #4b5563;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .verified {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #4A90E2;
-            color: white;
-            font-size: 10px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-        }
-
-        .verified::before {
-            content: "✓";
+        .job-title:hover {
+            text-decoration: underline;
         }
 
         .job-desc {
+            color: #4a5a6e;
             font-size: 0.95rem;
-            color: #4b5563;
             line-height: 1.5;
-            margin: 6px 0;
+            margin-bottom: 16px;
         }
 
-        .tags {
+        .skills-tags {
             display: flex;
-            gap: 8px;
             flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .skills-tags span {
+            background: #f0f4f9;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #2c3e66;
+        }
+
+        .budget-chip {
+            display: inline-block;
+            background: var(--light);
+            color: var(--c2);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 16px;
+            font-size: 12px;
+            color: #6c86a3;
             margin: 8px 0;
         }
 
-        .tags span {
-            background: #f3f4f6;
-            color: #4b5563;
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .meta {
-            font-size: 13px;
-            color: #6c86a3;
-            margin-top: 4px;
-        }
-
-        .card-side {
-            text-align: right;
-            min-width: 160px;
+        .action-bar {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 18px;
+            gap: 28px;
+            margin-top: 18px;
+            padding-top: 16px;
+            border-top: 1px solid #edf2f7;
         }
 
-        .budget {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #0f172a;
-            line-height: 1.3;
-        }
-
-        .budget span {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #6b7280;
-        }
-
-        .apply-btn {
-            padding: 10px 26px;
-            background: var(--primary);
-            color: #fff;
+        .action-btn-card {
+            background: none;
             border: none;
-            border-radius: 40px;
             font-weight: 600;
+            color: var(--c3);
             cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: 0.2s;
         }
 
-        .apply-btn:hover {
-            background: #005f97;
-            transform: scale(0.96);
+        .action-btn-card i {
+            font-size: 16px;
+        }
+
+        .action-btn-card:hover {
+            color: #005f97;
+            transform: scale(1.02);
         }
 
         .view-more {
@@ -735,20 +757,6 @@
                 justify-content: center;
             }
 
-            .up-card {
-                flex-direction: column;
-                text-align: left;
-                gap: 20px;
-            }
-
-            .card-side {
-                text-align: left;
-                align-items: flex-start;
-                width: 100%;
-                border-top: 1px solid #eef2f8;
-                padding-top: 18px;
-            }
-
             .filter-container {
                 border-radius: 32px;
                 padding: 16px 20px;
@@ -760,6 +768,11 @@
                 gap: 12px;
                 font-size: 13px;
                 white-space: nowrap;
+            }
+            
+            .action-bar {
+                flex-wrap: wrap;
+                gap: 16px;
             }
         }
 
@@ -788,6 +801,11 @@
                 flex-wrap: wrap;
                 white-space: normal;
                 text-align: center;
+            }
+            
+            .card-header-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -886,64 +904,7 @@
     </div>
 
     <div class="page-layout">
-        <aside class="sidebar">
-            <div class="category"><button class="category-btn">Data & AI <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Data Analysis & Visualization">Data Analysis & Visualization</a></li>
-                    <li><a href="#" data-subtype="Machine Learning Models">Machine Learning Models</a></li>
-                    <li><a href="#" data-subtype="Deep Learning">Deep Learning</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Development & IT <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Full Stack Engineers">Full Stack Engineers</a></li>
-                    <li><a href="#" data-subtype="Backend Developers">Backend Developers</a></li>
-                    <li><a href="#" data-subtype="DevOps Engineers">DevOps Engineers</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Design & Creative <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Graphic Designers">Graphic Designers</a></li>
-                    <li><a href="#" data-subtype="UX Designers">UX Designers</a></li>
-                    <li><a href="#" data-subtype="Web Designers">Web Designers</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Sales & Marketing <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Digital Marketers">Digital Marketers</a></li>
-                    <li><a href="#" data-subtype="Facebook Ads Specialists">Facebook Ads Specialists</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Writing & Translation <span
-                        class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Creative Writers">Creative Writers</a></li>
-                    <li><a href="#" data-subtype="Copy Editors">Copy Editors</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Admin & Support <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Personal Assistants">Personal Assistants</a></li>
-                    <li><a href="#" data-subtype="Microsoft Excel Experts">Excel Experts</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Finance & Accounting <span
-                        class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Financial Analysts">Financial Analysts</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">Legal <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Legal Advisors">Legal Advisors</a></li>
-                </ul>
-            </div>
-            <div class="category"><button class="category-btn">HR & Training <span class="arrow">›</span></button>
-                <ul class="sub-categories">
-                    <li><a href="#" data-subtype="Technical Recruiters">Technical Recruiters</a></li>
-                </ul>
-            </div>
-        </aside>
+        
 
         <main class="main-content" id="mainContent">
             <div id="cardsContainer"></div>
@@ -1021,11 +982,12 @@
 
         function timeAgo(dateStr) {
             const diff = Math.floor((Date.now() - new Date(dateStr)) / 1000);
-            if (diff < 3600)  return Math.floor(diff / 60) + 'm ago';
+            if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
             if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
             return Math.floor(diff / 86400) + 'd ago';
         }
 
+        // Render jobs with the new modern card design
         function renderJobs() {
             const container = document.getElementById("cardsContainer");
             if (!container) return;
@@ -1037,26 +999,48 @@
             }
             filteredJobs.slice(0, visibleCount).forEach(job => {
                 const card = document.createElement("div");
-                card.className = "up-card";
+                card.className = "job-card-modern";
                 card.innerHTML = `
-                <div class="card-main">
-                    <h3>${job.title}</h3>
-                    <div class="client-info">Posted by: <strong>${job.author_name}</strong> ${job.proposals_count > 0 ? '<span class="verified"></span>' : ''}</div>
-                    <p class="job-desc">${job.description}</p>
-                    <div class="tags"><span>${job.category}</span></div>
-                    <div class="meta">⏳ ${timeAgo(job.created_at)} | ${job.proposals_count} proposal${job.proposals_count !== 1 ? 's' : ''}</div>
-                </div>
-                <div class="card-side">
-                    <div class="budget">$${job.budget}<span>Fixed Price</span></div>
-                    <button class="apply-btn">Apply Now</button>
-                </div>`;
+                    <div class="card-header-row">
+                        <div class="user-info">
+                            <div class="avatar-sm"><i class="fas fa-user-tie"></i></div>
+                            <div class="client-details">
+                                <strong>${job.author_name || 'Anonymous'}</strong>
+                                <div class="time-badge">⏳ ${timeAgo(job.created_at)}</div>
+                            </div>
+                        </div>
+                        <span class="job-badge">${job.category || 'Job'}</span>
+                    </div>
+
+                    <h3 class="job-title">${job.title}</h3>
+
+                    <p class="job-desc">${job.description ? job.description.substring(0, 120) + '...' : 'No description available'}</p>
+
+                    <div class="skills-tags">
+                        ${job.tags ? job.tags.split(',').map(tag => `<span>#${tag.trim()}</span>`).join('') : '<span>#freelance</span><span>#remote</span>'}
+                    </div>
+
+                    <div class="budget-chip">
+                        💰 $${typeof job.budget === 'number' ? job.budget.toLocaleString() : job.budget}
+                    </div>
+
+                    <div class="meta-info">
+                        <span><i class="far fa-comment"></i> ${job.proposals_count || 0} proposal${job.proposals_count !== 1 ? 's' : ''}</span>
+                        <span><i class="far fa-eye"></i> ${job.views_count || 0} views</span>
+                    </div>
+
+                    <div class="action-bar">
+                        <button class="action-btn-card"><i class="far fa-thumbs-up"></i> Interested</button>
+                        <button class="action-btn-card"><i class="far fa-paper-plane"></i> Apply Now</button>
+                    </div>
+                `;
                 container.appendChild(card);
             });
             document.getElementById("loadMoreBtn").style.display = visibleCount >= filteredJobs.length ? "none" : "block";
         }
 
         function filterJobs() {
-            const type      = document.getElementById("typeFilter").value;
+            const type = document.getElementById("typeFilter").value;
             const priceRange = document.getElementById("priceFilter").value;
             const searchTerm = document.getElementById("searchKeyword")?.value.toLowerCase().trim() || "";
 
@@ -1064,11 +1048,12 @@
                 if (type !== "all" && job.category !== type) return false;
                 if (priceRange !== "all") {
                     const [min, max] = priceRange.split("-").map(Number);
-                    if (job.budget < min || (max !== 9999 && job.budget > max)) return false;
+                    const budget = typeof job.budget === 'number' ? job.budget : parseFloat(job.budget);
+                    if (budget < min || (max !== 9999 && budget > max)) return false;
                 }
-                if (searchTerm && !job.title.toLowerCase().includes(searchTerm) &&
-                    !job.description.toLowerCase().includes(searchTerm) &&
-                    !job.author_name.toLowerCase().includes(searchTerm)) return false;
+                if (searchTerm && !job.title?.toLowerCase().includes(searchTerm) &&
+                    !job.description?.toLowerCase().includes(searchTerm) &&
+                    !job.author_name?.toLowerCase().includes(searchTerm)) return false;
                 return true;
             });
             visibleCount = 6;
@@ -1114,7 +1099,7 @@
         });
 
         const menuToggle = document.getElementById("menuToggle");
-        const navLinks   = document.getElementById("navLinks");
+        const navLinks = document.getElementById("navLinks");
         if (menuToggle) menuToggle.onclick = () => navLinks.classList.toggle("active");
 
         const cta = document.querySelector('.cta-fixed');
