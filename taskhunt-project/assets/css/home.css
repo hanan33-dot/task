@@ -13,7 +13,14 @@ body{
     background: #f7f9fc;
     margin:0;
 }
-  
+  /* استخدام الخط الافتراضي للمتصفح */
+* {
+    font-family: inherit;
+}
+
+body, html {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
  /* NAVBAR */
 nav {
   display: flex;
@@ -101,7 +108,6 @@ nav ul li a:hover {
   cursor: pointer;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 .hero-section {
     display: flex;
@@ -635,7 +641,6 @@ h3 {
     padding: 60px 20px;
     text-align: center;
     direction: ltr; /* تم التعديل للإنجليزية بناءً على محتوى الكروت، اجعليها rtl لو النصوص عربية */
-    font-family: "Cairo", sans-serif;
     background-color: #fff;
 }
 
@@ -668,7 +673,6 @@ h3 {
 .features-section {
     padding: 100px 0;
     background-color: var(--section-bg);
-    font-family: 'Inter', 'Cairo', sans-serif;
 }
 
 .container {
@@ -914,7 +918,6 @@ h3 {
   padding:80px 20px;
   background:transparent;
   text-align:center;
-  font-family:'Segoe UI',sans-serif;
 }
 
 .section-main-title{
@@ -1014,7 +1017,6 @@ h3 {
   font-size:15px;
   color:#475569;
   line-height:1.6;
-  font-style:italic;
 }
 
 /* موبايل */
@@ -1075,7 +1077,6 @@ h3 {
 .footer {
   background: #051923;
   padding: 20px 10px;
-  font-family: "Cairo", sans-serif;
   direction: ltr;
   text-align: left;
   color: #ffffff;
